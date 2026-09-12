@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>盛超 Chao Sheng · 医学影像与医疗 AI</title>
+<meta name="description" content="盛超，广东医科大学生物医学工程本科生。关注医学影像分析、CT 重建与模型可靠评估，展示工作站、内镜检测和影像组学项目。">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a436d'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='20' font-family='serif'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳至正文</a>
+<div class="shell">
+<header class="profile">
+<a class="wordmark" href="#about" aria-label="盛超，返回个人介绍">SC<span>.</span></a>
+<h1>盛超<span lang="en">Chao Sheng</span></h1>
+<p class="affiliation">广东医科大学<br>生物医学工程 · 本科</p>
+<nav aria-label="主要导航"><a href="#about">关于</a><a href="#projects">精选项目</a><a href="#education">教育背景</a><a href="#writing">教程与交流</a></nav>
+<div class="profile-links"><a href="mailto:sunce764@gmail.com">Email</a><span aria-hidden="true">/</span><a href="https://github.com/sunce764">GitHub</a><span aria-hidden="true">/</span><a href="assets/sheng-chao-resume.pdf" download>简历 PDF</a></div>
+<p class="sidebar-note">Medical imaging<br>Algorithms &amp; evaluation</p>
+</header>
+<main id="main">
+<section id="about" class="intro">
+<p class="eyebrow">关于我 <span lang="en">/ About</span></p>
+<h2>生物医学工程背景，<br>专注医学影像算法与软件。</h2>
+<p>我是盛超，广东医科大学生物医学工程专业大四学生。项目实践围绕 <strong>CT 重建、三维分割与内镜图像分类</strong>，也将算法集成到可交互的影像工作站中。</p>
+<p class="highlights">大三学年专业前 5% <span aria-hidden="true">·</span> MICCAI Educational Challenge 入围</p>
+<div class="availability"><span class="availability-label">实习意向</span><span>深圳 · 医学影像／医疗 AI 算法<br><small>11 月中旬到岗，可实习 6 个月</small></span></div>
+</section>
+<section id="projects" class="projects">
+<div class="section-heading"><h2>精选项目</h2><span lang="en">Selected work</span></div>
+<article class="project featured">
+<div class="project-top"><span class="kind">01 / 影像软件与算法</span><span class="date">2026.05 — 至今</span></div>
+<h3>医学影像工作站与 CT 重建实验室</h3>
+<p class="project-lead">面向教学与科研的桌面影像工具，连接算法实验与交互操作。</p>
+<div class="featured-content"><figure><a href="assets/reconstruction.png" target="_blank" rel="noopener" aria-label="打开工作站重建实验室原图"><img src="assets/reconstruction.png" width="1680" height="1236" alt="工作站重建实验室：四窗展示 Shepp-Logan 模体、弦图、未滤波反投影与滤波反投影结果"></a><figcaption>Shepp-Logan 合成模体上的重建对照 · 项目实际界面</figcaption></figure>
+<div class="featured-copy"><p><strong>算法与软件集成。</strong>实现 DICOM 加载、三平面 MPR、多器官分割及 ROI 定量；结合经典 CT 重建算法与残差 U-Net，开展稀疏视角重建实验。</p>
+<div class="result"><b class="result-label">分割预处理修正</b><strong>0.684 → 0.840</strong><span>平均 Dice · 与图中 CT 重建演示分属不同实验<br>同源公开数据 20 例，补齐与训练一致的 spacing 重采样后均改善。</span></div></div></div>
+<details><summary>方法与验证范围</summary><div class="detail-body">重建模块覆盖直接傅里叶重建、ART、SIRT 和 ASD-POCS，工作站支持工程保存。序列身份、轴向和空间几何检查用于防止蒙版错位与缓存误用。实验包括分布外迁移和虚构结构分析。上述 Dice 为特定历史版本的 20 例配对结果，不代表当前所有输入或独立临床验证；软件用于教学与科研。</div></details>
+<div class="project-footer"><span>Python · PySide6 · ONNX Runtime</span><a href="https://github.com/sunce764/medical-imaging-workstation">查看代码 <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="project">
+<div class="project-top"><span class="kind">02 / 内镜图像分类</span><span class="date">2026.07 — 2026.09</span></div>
+<h3>RARE26 · Barrett 食管病变检测</h3>
+<p class="project-lead">面向 Barrett 食管内镜图像的病变分类。</p>
+<p><strong>跨中心评估与模型集成。</strong>基于 GastroNet 预训练 ResNet-50，以固定 90% 召回率下的阳性预测值为目标，完成多随机种子集成与 Docker 推理交付。</p>
+<div class="evidence-panel"><p class="evidence-title">双向跨中心评估 · AUROC</p>
+<table><caption>方法报告中的 10 模型集成对照</caption><thead><tr><th scope="col">训练 → 测试</th><th scope="col">前版</th><th scope="col">选定方案</th></tr></thead><tbody><tr><th scope="row">中心 0 → 1</th><td>0.9804</td><td><strong>0.9937</strong></td></tr><tr><th scope="row">中心 1 → 0</th><td>0.9265</td><td><strong>0.9485</strong></td></tr></tbody></table>
+<p class="evidence-note">测试集分别为 816 张（97 阳性）和 2,279 张（61 阳性）。内部 LOCO 结果用于方案选择，不是最终 12 模型提交权重的独立测试成绩或竞赛排名。</p></div>
+<details><summary>训练与交付</summary><div class="detail-body">训练结合类别采样、EMA 和水平翻转增强，以双向留一中心（LOCO）评估考察泛化。集成方案采用 12 个随机种子模型的概率平均。训练和推理使用一致预处理，Docker 容器根据吞吐量和时间预算调度推理，并处理超时及输入输出异常。内部结果来自 LOCO 评估模型，不能作为最终集成权重的独立测试成绩；此页不列最终竞赛排名。</div></details>
+<div class="project-footer"><span>PyTorch · GastroNet · Docker</span><a href="https://github.com/sunce764/rare26-barrett-detection">查看代码 <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="project">
+<div class="project-top"><span class="kind">03 / 模型可靠性工具</span><span class="date">2026.07 — 2026.09</span></div>
+<h3>MedAudit</h3>
+<p class="project-lead">医学图像分类模型的数据与特征审计工具。</p>
+<p><strong>把可靠性检查做成可复用工具。</strong>通过配置驱动的 Python CLI，检查属性可预测性、跨集合近重复和患者分组泄漏；配套评估指标与 Bootstrap 置信区间计算。</p>
+<figure class="audit-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener" aria-label="查看 MedAudit 合成对照实验原图"><img src="assets/medaudit-probe.png" width="1926" height="874" loading="lazy" alt="MedAudit 合成对照：仅编码类别时类内探针 AUROC 约 0.55 和 0.57，同时编码成像模式时约 0.79 和 0.77"></a><figcaption>教程合成实验：同一队列，仅改变特征是否编码成像模式。类内探针帮助区分类别相关性与额外属性编码；不代表真实患者模型表现。</figcaption></figure>
+<details><summary>工具能回答什么</summary><div class="detail-body">输入包括冻结特征、样本清单和 JSON 配置；实现总体／类内属性探针，以及 AUROC、Brier、ECE 和患者簇 Bootstrap 指标函数。属性能否从特征中预测，与分类器是否实际依赖该属性，是不同问题。工具区分用户提供的划分与自行生成的划分，并明确无法判断的情形。校准指标函数已实现，完整校准审计尚未接入 CLI。</div></details>
+<div class="project-footer"><span>NumPy · Python CLI · MIT</span><a href="https://github.com/sunce764/medaudit">查看代码 <span aria-hidden="true">↗</span></a></div>
+</article>
+<article class="project">
+<div class="project-top"><span class="kind">04 / 影像组学研究</span><span class="date">2026.07 — 至今</span></div>
+<h3>HCC-MVI 多期 CT 影像组学</h3>
+<p class="project-lead">肝细胞癌微血管侵犯预测的方法重建与数据分析。</p>
+<p><strong>多期影像与组学特征处理。</strong>重建四期 CT、肿瘤／瘤周 VOI 及 94 项原始特征的处理流程，完成 6,660 个 VOI 的特征重算核对与去重敏感性分析。</p>
+<details><summary>研究现状</summary><div class="detail-body">研究涉及 111 条历史队列记录；6,660 个 VOI 的核对包含有明确失败记录的项目，不等于全部产生有效特征。现有评估不足以确认模型有效性。保留方法重建偏差、重复扫描处理及不确定性分析，后续结论需要新的验证证据。患者数据与内部研究材料不在本页提供下载。</div></details>
+<div class="project-footer"><span>PyRadiomics · SimpleITK · scikit-learn</span><span class="secondary">方法重建与数据分析</span></div>
+</article>
+</section>
+<section id="education">
+<div class="section-heading"><h2>教育背景</h2><span lang="en">Education</span></div>
+<div class="education-top"><h3>广东医科大学</h3><span>2022 — 2027</span></div>
+<p>生物医学工程 · 本科大四</p>
+<p><strong>大三学年均分 90.56 / 100，该学年专业前 5%。</strong></p>
+<p class="secondary">医学信号处理（94） · 医用 X 线机原理与设备（93） · 信号与线性系统（92）</p>
+</section>
+<section id="writing">
+<div class="section-heading"><h2>教程与交流</h2><span lang="en">Writing &amp; communication</span></div>
+<div class="writing-item"><span class="year">2026</span><div><p class="recognition">MICCAI Educational Challenge · Finalist</p><h3>From Pixels to Patients</h3><p>通过合成演示与真实纠错案例，介绍医学图像分类器的可靠性审计，练习区分实验结果与结论。</p><a href="https://github.com/sunce764/medaudit/blob/main/tutorial/from-pixels-to-patients.md">阅读英文教程 <span aria-hidden="true">↗</span></a> <span class="resource-divider" aria-hidden="true"> / </span><a href="https://drive.google.com/file/d/1c2gTuBD3pS-hVzmSJPsFe1aiS6R1MEVj/view" target="_blank" rel="noopener">观看 1 分钟视频（英文） <span aria-hidden="true">↗</span></a></div></div>
+</section>
+<footer><p>欢迎交流医学影像与算法实习机会。</p><a href="mailto:sunce764@gmail.com">sunce764@gmail.com</a><div class="footer-bottom"><span>盛超 · Chao Sheng</span><a href="#about">回到顶部 ↑</a></div></footer>
+</main>
+</div>
+</body>
+</html>
