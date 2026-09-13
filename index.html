@@ -57,6 +57,8 @@
 <p><strong>把可靠性检查做成可复用工具。</strong>通过配置驱动的 Python CLI，检查属性可预测性、跨集合近重复和患者分组泄漏；配套评估指标与 Bootstrap 置信区间计算。</p>
 <figure class="audit-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener" aria-label="查看 MedAudit 合成对照实验原图"><img src="assets/medaudit-probe.png" width="1926" height="874" loading="lazy" alt="MedAudit 合成对照：仅编码类别时类内探针 AUROC 约 0.55 和 0.57，同时编码成像模式时约 0.79 和 0.77"></a><figcaption>教程合成实验：同一队列，仅改变特征是否编码成像模式。类内探针帮助区分类别相关性与额外属性编码；不代表真实患者模型表现。</figcaption></figure>
 <details><summary>工具能回答什么</summary><div class="detail-body">输入包括冻结特征、样本清单和 JSON 配置；实现总体／类内属性探针，以及 AUROC、Brier、ECE 和患者簇 Bootstrap 指标函数。属性能否从特征中预测，与分类器是否实际依赖该属性，是不同问题。工具区分用户提供的划分与自行生成的划分，并明确无法判断的情形。校准指标函数已实现，完整校准审计尚未接入 CLI。</div></details>
+<p class="secondary">配套英文运行指南与可运行合成算例：演示校准指标计算，以及固定敏感度、特异度时患病率变化对阳性预测值的影响。算例用于教学，不代表临床性能。</p>
+<p class="secondary"><a href="https://github.com/sunce764/medaudit/blob/main/tutorial/RUNNING.md">运行指南</a> · <a href="https://github.com/sunce764/medaudit/blob/main/tutorial/worked_examples.py">查看教学算例</a></p>
 <div class="project-footer"><span>NumPy · Python CLI · MIT</span><a href="https://github.com/sunce764/medaudit">查看代码 <span aria-hidden="true">↗</span></a></div>
 </article>
 <article class="project">
