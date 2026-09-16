@@ -1,89 +1,93 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>盛超 Chao Sheng · 医学影像与医疗 AI</title>
-<meta name="description" content="盛超，广东医科大学生物医学工程本科生。关注医学影像分析、CT 重建与模型可靠评估，展示工作站、内镜检测和影像组学项目。">
-<meta name="color-scheme" content="light">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a436d'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='20' font-family='serif'%3ES%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=contact-1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chao Sheng — computer vision and image algorithms. Projects in 3D segmentation, reconstruction, cross-domain classification and model reliability.">
+  <title>Chao Sheng | Computer Vision</title>
+  <link rel="stylesheet" href="style.css?v=contact-clean-1">
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="alternate" hreflang="zh-CN" href="index_cn.html">
 </head>
 <body>
-<a class="skip" href="#main">跳至正文</a>
-<div class="shell">
-<header class="profile">
-<a class="wordmark" href="#about" aria-label="盛超，返回个人介绍">SC<span>.</span></a>
-<h1>盛超<span lang="en">Chao Sheng</span></h1>
-<p class="affiliation">广东医科大学<br>生物医学工程 · 本科</p>
-<nav aria-label="主要导航"><a href="#about">关于</a><a href="#projects">精选项目</a><a href="#education">教育背景</a><a href="#writing">教程与交流</a></nav>
-<div class="profile-links"><details class="email-contact"><summary>Email</summary><div class="email-panel"><label>联系邮箱<input class="email-address" aria-label="联系邮箱" value="sunce764@gmail.com" readonly></label><div class="email-actions"><button type="button" class="copy-email">复制邮箱</button></div><p class="email-status" role="status" aria-live="polite">也可长按或选中地址复制。</p></div></details><span aria-hidden="true">/</span><a href="https://github.com/sunce764">GitHub</a><span aria-hidden="true">/</span><a href="assets/sheng-chao-resume.pdf" download>简历 PDF</a></div>
-<p class="sidebar-note">Medical imaging<br>Algorithms &amp; evaluation</p>
-</header>
-<main id="main">
-<section id="about" class="intro">
-<p class="eyebrow">关于我 <span lang="en">/ About</span></p>
-<h2>生物医学工程背景，<br>专注医学影像算法与软件。</h2>
-<p>我是盛超，广东医科大学生物医学工程专业大四学生。项目实践围绕 <strong>CT 重建、三维分割与内镜图像分类</strong>，也将算法集成到可交互的影像工作站中。</p>
-<p class="highlights">大三学年专业前 5% <span aria-hidden="true">·</span> <a href="#writing">MICCAI Educational Challenge 入围</a></p>
-<div class="availability"><span class="availability-label">实习意向</span><span>深圳 · 医学影像／医疗 AI 算法<br><small>11 月中旬到岗 · 6 个月 · 每周可到岗 5 天，具体可协商</small></span></div>
-</section>
-<section id="projects" class="projects">
-<div class="section-heading"><h2>精选项目</h2><span lang="en">Selected work</span></div>
-<article class="project featured">
-<div class="project-top"><span class="kind">01 / 影像软件与算法</span><span class="date">2026.05 — 至今</span></div>
-<h3>医学影像工作站与 CT 重建实验室</h3>
-<p class="project-lead">面向教学与科研的桌面影像工具，连接算法实验与交互操作。</p>
-<div class="featured-content"><figure><a href="assets/reconstruction.png" target="_blank" rel="noopener" aria-label="打开工作站重建实验室原图"><img src="assets/reconstruction.png" width="1680" height="1236" alt="工作站重建实验室：四窗展示 Shepp-Logan 模体、弦图、未滤波反投影与滤波反投影结果"></a><figcaption>Shepp-Logan 合成模体上的重建对照 · 项目实际界面</figcaption></figure>
-<div class="featured-copy"><p><strong>算法与软件集成。</strong>实现 DICOM 加载、三平面 MPR、多器官分割及 ROI 定量；结合经典 CT 重建算法与残差 U-Net，开展稀疏视角重建实验。</p>
-<div class="result"><b class="result-label">分割预处理修正</b><strong>0.684 → 0.840</strong><span>平均 Dice · 与图中 CT 重建演示分属不同实验<br>同源公开数据 20 例，补齐与训练一致的 spacing 重采样后均改善。</span></div></div></div>
-<details><summary>方法与验证范围</summary><div class="detail-body">重建模块覆盖直接傅里叶重建、ART、SIRT 和 ASD-POCS，工作站支持工程保存。序列身份、轴向和空间几何检查用于防止蒙版错位与缓存误用。实验包括分布外迁移和虚构结构分析。上述 Dice 为特定历史版本的 20 例配对结果，不代表当前所有输入或独立临床验证；软件用于教学与科研。</div></details>
-<div class="project-footer"><span>Python · PySide6 · ONNX Runtime</span><a href="https://github.com/sunce764/medical-imaging-workstation">查看代码 <span aria-hidden="true">↗</span></a></div>
-</article>
-<article class="project">
-<div class="project-top"><span class="kind">02 / 算法竞赛项目</span><span class="date">2026.07 — 2026.09</span></div>
-<h3>RARE26 · Barrett 食管病变检测</h3>
-<p class="project-lead">面向低患病率场景的 Barrett 食管内镜图像病变分类。</p>
-<p><strong>跨中心评估与模型集成。</strong>基于 GastroNet 预训练 ResNet-50，以固定 90% 召回率下的阳性预测值为目标，完成多随机种子集成与 Docker 推理交付。</p>
-<div class="evidence-panel"><p class="evidence-title">双向跨中心评估 · AUROC</p>
-<table><caption>方法报告中的 10 模型集成对照</caption><thead><tr><th scope="col">训练 → 测试</th><th scope="col">前版</th><th scope="col">选定方案</th></tr></thead><tbody><tr><th scope="row">中心 0 → 1</th><td>0.9804</td><td><strong>0.9937</strong></td></tr><tr><th scope="row">中心 1 → 0</th><td>0.9265</td><td><strong>0.9485</strong></td></tr></tbody></table>
-<p class="evidence-note">测试集分别为 816 张（97 阳性）和 2,279 张（61 阳性）。内部 LOCO 结果用于方案选择，不是最终 12 模型提交权重的独立测试成绩或竞赛排名。</p></div>
-<details><summary>训练与交付</summary><div class="detail-body">训练结合类别采样、EMA 和水平翻转增强，以双向留一中心（LOCO）评估考察泛化。集成方案采用 12 个随机种子模型的概率平均。训练和推理使用一致预处理，Docker 容器根据吞吐量和时间预算调度推理，并处理超时及输入输出异常。内部结果来自 LOCO 评估模型，不能作为最终集成权重的独立测试成绩；此页不列最终竞赛排名。</div></details>
-<div class="project-footer"><span>PyTorch · GastroNet · Docker</span><a href="https://github.com/sunce764/rare26-barrett-detection">查看代码 <span aria-hidden="true">↗</span></a></div>
-</article>
-<article class="project">
-<div class="project-top"><span class="kind">03 / 模型可靠性工具</span><span class="date">2026.07 — 2026.09</span></div>
-<h3>MedAudit</h3>
-<p class="project-lead">医学图像分类模型的数据与特征审计工具。</p>
-<p><strong>把可靠性检查做成可复用工具。</strong>通过配置驱动的 Python CLI，检查属性可预测性、跨集合近重复和患者分组泄漏；配套评估指标与 Bootstrap 置信区间计算。</p>
-<figure class="audit-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener" aria-label="查看 MedAudit 合成对照实验原图"><img src="assets/medaudit-probe.png" width="1926" height="874" loading="lazy" alt="MedAudit 合成对照：仅编码类别时类内探针 AUROC 约 0.55 和 0.57，同时编码成像模式时约 0.79 和 0.77"></a><figcaption>教程合成实验：同一队列，仅改变特征是否编码成像模式。类内探针帮助区分类别相关性与额外属性编码；不代表真实患者模型表现。</figcaption></figure>
-<details><summary>工具能回答什么</summary><div class="detail-body">输入包括冻结特征、样本清单和 JSON 配置；实现总体／类内属性探针，以及 AUROC、Brier、ECE 和患者簇 Bootstrap 指标函数。属性能否从特征中预测，与分类器是否实际依赖该属性，是不同问题。工具区分用户提供的划分与自行生成的划分，并明确无法判断的情形。校准指标函数已实现，完整校准审计尚未接入 CLI。</div></details>
-<p class="secondary">配套英文运行指南与可运行合成算例：演示校准指标计算，以及固定敏感度、特异度时患病率变化对阳性预测值的影响。算例用于教学，不代表临床性能。</p>
-<p class="secondary"><a href="https://github.com/sunce764/medaudit/blob/main/tutorial/RUNNING.md">运行指南</a> · <a href="https://github.com/sunce764/medaudit/blob/main/tutorial/worked_examples.py">查看教学算例</a></p>
-<div class="project-footer"><span>NumPy · Python CLI · MIT</span><a href="https://github.com/sunce764/medaudit">查看代码 <span aria-hidden="true">↗</span></a></div>
-</article>
-<article class="project">
-<div class="project-top"><span class="kind">04 / 影像组学研究</span><span class="date">2026.07 — 至今</span></div>
-<h3>HCC-MVI 多期 CT 影像组学</h3>
-<p class="project-lead">肝细胞癌微血管侵犯预测的方法重建与数据分析。</p>
-<p><strong>多期影像与组学特征处理。</strong>重建四期 CT、肿瘤／瘤周 VOI 及 94 项原始特征的处理流程，完成 6,660 个 VOI 的重算核对，覆盖有效特征一致性及失败记录复现，并开展去重敏感性分析。</p>
-<details><summary>研究现状</summary><div class="detail-body">研究涉及 111 条历史队列记录；6,660 个 VOI 的核对包含有明确失败记录的项目，不等于全部产生有效特征。现有评估不足以确认模型有效性。保留方法重建偏差、重复扫描处理及不确定性分析，后续结论需要新的验证证据。患者数据与内部研究材料不在本页提供下载。</div></details>
-<div class="project-footer"><span>PyRadiomics · SimpleITK · scikit-learn</span><span class="secondary">方法重建与数据分析</span></div>
-</article>
-</section>
-<section id="education">
-<div class="section-heading"><h2>教育背景</h2><span lang="en">Education</span></div>
-<div class="education-top"><h3>广东医科大学</h3><span>2022 — 2027</span></div>
-<p>生物医学工程 · 本科大四</p>
-<p><strong>大三学年均分 90.56 / 100，该学年专业前 5%。</strong></p>
-<p class="secondary">医学信号处理（94） · 医用 X 线机原理与设备（93） · 信号与线性系统（92）</p>
-</section>
-<section id="writing">
-<div class="section-heading"><h2>教程与交流</h2><span lang="en">Writing &amp; communication</span></div>
-<div class="writing-item"><span class="year">2026</span><div><p class="recognition">MICCAI Educational Challenge 2026｜入围（Finalist）</p><h3>参赛作品：From Pixels to Patients</h3><p>配套 MedAudit 的英文可靠性审计教程与一分钟演示视频。通过合成演示与真实纠错案例，介绍医学图像分类器的可靠性审计，练习区分实验结果与结论。</p><a href="https://github.com/sunce764/medaudit/blob/main/tutorial/from-pixels-to-patients.md">阅读英文教程 <span aria-hidden="true">↗</span></a> <span class="resource-divider" aria-hidden="true"> / </span><a href="assets/mec2026.mp4" target="_blank" rel="noopener">观看 1 分钟视频（英文） <span aria-hidden="true">↗</span></a></div></div>
-</section>
-<footer><p>欢迎交流医学影像与算法实习机会。</p><details class="email-contact"><summary>sunce764@gmail.com</summary><div class="email-panel"><label>联系邮箱<input class="email-address" aria-label="联系邮箱" value="sunce764@gmail.com" readonly></label><div class="email-actions"><button type="button" class="copy-email">复制邮箱</button></div><p class="email-status" role="status" aria-live="polite">也可长按或选中地址复制。</p></div></details><div class="footer-bottom"><span>盛超 · Chao Sheng</span><a href="#about">回到顶部 ↑</a></div></footer>
-</main>
-</div>
-<script src="contact.js?v=contact-1" defer></script>
+  <a class="skip-link" href="#profile">Skip to main content</a>
+  <main class="page-shell" id="profile" tabindex="-1">
+    <h1 class="page-heading"><span lang="en">Chao Sheng</span> <span>「盛超」</span></h1>
+    <table class="profile-table" role="presentation">
+      <tr>
+        <td class="profile-media" valign="top">
+          <img class="profile-photo" src="assets/portrait-white.png" alt="Portrait of Chao Sheng" width="1254" height="1254">
+          <nav class="profile-links" aria-label="Personal links">
+            <div><a href="https://github.com/sunce764" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></div>
+            <div><a href="index_cn.html" lang="zh-CN" hreflang="zh-CN">中文</a></div>
+          </nav>
+        </td>
+        <td class="profile-copy" valign="top">
+          <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong>, graduating in 2027. I focus on <strong>computer vision and image processing</strong>.</p>
+          <p>I work on 3D segmentation, reconstruction and cross-domain classification using CT and endoscopic images, with an emphasis on consistent preprocessing, reliable evaluation and working software.</p>
+          <p class="availability">Seeking an internship in Shenzhen · Available from mid-November 2026<br>Six months · Five days per week, negotiable</p>
+          <p class="contact" id="contact"><strong>Email: </strong><strong><a href="mailto:sunce764@gmail.com" title="Send email to sunce764@gmail.com">sunce764@gmail.com</a></strong></p>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <section class="content-section projects-section" id="research" aria-labelledby="research-title">
+      <h2 id="research-title">Selected Projects</h2>
+
+      <article class="project-entry">
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
+          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
+          <p class="project-abstract"><strong>A desktop workbench integrating 3D image processing and reconstruction.</strong> Implemented DICOM loading, MPR, segmentation and ROI measurements, added spatial-geometry checks and project save/restore, and corrected missing spacing resampling in segmentation preprocessing.</p>
+
+          <p class="repo-links"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">Code &amp; documentation</a></p>
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>An interactive workbench for 3D processing and reconstruction experiments.</strong> Supports DICOM loading, three-plane MPR, multi-organ segmentation, ROI measurements and project save/restore. Checks series identity and spatial geometry to prevent misplaced masks and stale cache reuse.</p>
+          <p>Implemented direct Fourier and several iterative CT reconstruction methods, with residual U-Net experiments for sparse-view reconstruction. Correcting missing spacing resampling improved mean Dice from 0.684 to 0.840 in a historical paired comparison of 20 cases from the same public data source.</p>
+          <p class="repo-meta">The Dice comparison and the reconstruction screenshot are separate experiments. These results are not independent clinical validation. The software is for education and research.</p></div></details>
+        </div>
+      </article>
+
+      <article class="project-entry project-entry-text">
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26: Cross-domain Classification &amp; Ensemble Inference</a></h3>
+          <p class="repo-tech">PyTorch · ResNet-50 · GastroNet · Docker</p>
+          <p class="project-abstract"><strong>Cross-center classification experiments with packaged ensemble inference.</strong> Used near-duplicate grouping and bidirectional leave-one-center-out evaluation, aligned training and inference preprocessing, and built a Docker container with time-budget scheduling and timeout fallback.</p>
+
+          <p class="repo-links"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">Code &amp; methods</a></p>
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>A competition project for endoscopic classification with few positive samples.</strong> The task objective is precision at 90% recall. Uses GastroNet-pretrained ResNet-50, class sampling, EMA, near-duplicate grouping and bidirectional leave-one-center-out evaluation.</p>
+          <p>Aligned training and inference preprocessing, averaged probabilities from 12 random-seed models and applied horizontal-flip augmentation. Packaged inference in Docker with time-budget scheduling, timeout fallback and input/output checks.</p>
+          <p class="repo-meta">Internal LOCO evaluation supported method selection; it is not an independent test result for the final submitted weights. No competition ranking is claimed.</p></div></details>
+        </div>
+      </article>
+
+      <article class="project-entry project-entry-text">
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">MedAudit: Image Classifier Reliability</a></h3>
+          <p class="repo-tech">NumPy · Python CLI · Data Leakage · Calibration</p>
+          <p class="project-abstract"><strong>A command-line tool for leakage, near-duplicate and feature-attribute checks.</strong> Implemented overall and within-class attribute probes, with an accompanying English tutorial and synthetic examples explaining evaluation results and their limits.</p>
+          <p class="recognition">Companion work: MICCAI Educational Challenge 2026 Finalist</p>
+          <p class="repo-links"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">Code</a> / <a href="https://github.com/sunce764/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">Tutorial</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ Video (1 min)</a></p>
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>A runnable audit workflow for leakage, near-duplicates and feature attributes.</strong> The configuration-driven CLI supports cross-split near-duplicate checks, patient-group leakage checks and overall/within-class attribute probes. Metric functions include AUROC, Brier score, ECE and patient-cluster bootstrap.</p>
+          <p>Includes an English tutorial, running guide and runnable synthetic examples. The companion work <em>From Pixels to Patients</em> was a finalist in the MICCAI Educational Challenge 2026.</p>
+          <p class="repo-meta">Predictable attributes do not establish that the classifier relies on them. Synthetic examples are not clinical performance evidence. The full calibration audit is not yet integrated into the CLI.</p><figure class="audit-detail-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener noreferrer"><img src="assets/medaudit-probe.png" alt="Synthetic experiment comparing overall and within-class attribute probes" width="1926" height="874" loading="lazy" /></a><figcaption>Synthetic comparison; open full image. Not clinical performance evidence.</figcaption></figure></div></details>
+        </div>
+      </article>
+
+      <article class="project-entry project-entry-text">
+        <div class="project-copy">
+          <h3 class="repo-title">HCC-MVI: Multi-phase CT Feature Extraction</h3>
+          <p class="repo-tech">SimpleITK · PyRadiomics · scikit-learn</p>
+          <p class="project-abstract"><strong>Reconstruction of a multi-phase CT feature extraction workflow with output verification.</strong> Connected tumor/peritumoral regions, radiomic features and model fusion, ran deduplication sensitivity and confidence-interval analyses, and retained failure records for traceability.</p>
+
+
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>Reconstructing the data-processing chain for multi-phase images, features and model fusion.</strong> Used 111 historical cohort records to reconstruct workflows for four-phase CT, 3D tumor/peritumoral volumes of interest and 94 original radiomic features, with deduplication sensitivity and confidence-interval analyses.</p>
+          <p>Completed recomputation checks for 6,660 volumes of interest, covering valid-feature consistency and reproduction of failure records in a traceable workflow.</p>
+          <p class="repo-meta">The count includes failure records and does not mean every volume yielded valid features. Current evidence does not establish model validity. Patient data and internal materials are not public.</p></div></details>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="contact.js?v=contact-clean-1" defer="defer"></script>
 </body>
 </html>
