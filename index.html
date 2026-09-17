@@ -18,7 +18,7 @@
         <td class="profile-media" valign="top">
           <img class="profile-photo" src="assets/portrait-white.png" alt="Portrait of Chao Sheng" width="1254" height="1254">
           <nav class="profile-links" aria-label="Personal links">
-            <div><a href="https://github.com/sunce764" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></div>
+            <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></div>
             <div><a href="index_cn.html" lang="zh-CN" hreflang="zh-CN">中文</a></div>
           </nav>
         </td>
@@ -26,7 +26,7 @@
           <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong>, graduating in 2027. I focus on <strong>computer vision and image processing</strong>.</p>
           <p>I work on 3D segmentation, reconstruction and cross-domain classification using CT and endoscopic images, with an emphasis on consistent preprocessing, reliable evaluation and working software.</p>
           <p class="availability">Seeking an internship in Shenzhen · Available from mid-November 2026<br>Six months · Five days per week, negotiable</p>
-          <p class="contact" id="contact"><strong>Email: </strong><strong><a href="mailto:sunce764@gmail.com" title="Send email to sunce764@gmail.com">sunce764@gmail.com</a></strong></p>
+          <p class="contact" id="contact"><strong>Email: </strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="Send email to chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
       </tr>
     </table>
@@ -37,11 +37,11 @@
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
           <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
           <p class="project-abstract"><strong>A desktop workbench integrating 3D image processing and reconstruction.</strong> Implemented DICOM loading, MPR, segmentation and ROI measurements, added spatial-geometry checks and project save/restore, and corrected missing spacing resampling in segmentation preprocessing.</p>
 
-          <p class="repo-links"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">Code &amp; documentation</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">Code &amp; documentation</a></p>
           <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>An interactive workbench for 3D processing and reconstruction experiments.</strong> Supports DICOM loading, three-plane MPR, multi-organ segmentation, ROI measurements and project save/restore. Checks series identity and spatial geometry to prevent misplaced masks and stale cache reuse.</p>
           <p>Implemented direct Fourier and several iterative CT reconstruction methods, with residual U-Net experiments for sparse-view reconstruction. Correcting missing spacing resampling improved mean Dice from 0.684 to 0.840 in a historical paired comparison of 20 cases from the same public data source.</p>
           <p class="repo-meta">The Dice comparison and the reconstruction screenshot are separate experiments. These results are not independent clinical validation. The software is for education and research.</p></div></details>
@@ -50,11 +50,11 @@
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26: Cross-domain Classification &amp; Ensemble Inference</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26: Cross-domain Classification &amp; Ensemble Inference</a></h3>
           <p class="repo-tech">PyTorch · ResNet-50 · GastroNet · Docker</p>
           <p class="project-abstract"><strong>Cross-center classification experiments with packaged ensemble inference.</strong> Used near-duplicate grouping and bidirectional leave-one-center-out evaluation, aligned training and inference preprocessing, and built a Docker container with time-budget scheduling and timeout fallback.</p>
 
-          <p class="repo-links"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">Code &amp; methods</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">Code &amp; methods</a></p>
           <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>A competition project for endoscopic classification with few positive samples.</strong> The task objective is precision at 90% recall. Uses GastroNet-pretrained ResNet-50, class sampling, EMA, near-duplicate grouping and bidirectional leave-one-center-out evaluation.</p>
           <p>Aligned training and inference preprocessing, averaged probabilities from 12 random-seed models and applied horizontal-flip augmentation. Packaged inference in Docker with time-budget scheduling, timeout fallback and input/output checks.</p>
           <p class="repo-meta">Internal LOCO evaluation supported method selection; it is not an independent test result for the final submitted weights. No competition ranking is claimed.</p></div></details>
@@ -63,11 +63,11 @@
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">MedAudit: Image Classifier Reliability</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">MedAudit: Image Classifier Reliability</a></h3>
           <p class="repo-tech">NumPy · Python CLI · Data Leakage · Calibration</p>
           <p class="project-abstract"><strong>A command-line tool for leakage, near-duplicate and feature-attribute checks.</strong> Implemented overall and within-class attribute probes, with an accompanying English tutorial and synthetic examples explaining evaluation results and their limits.</p>
           <p class="recognition">Companion work: MICCAI Educational Challenge 2026 Finalist</p>
-          <p class="repo-links"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">Code</a> / <a href="https://github.com/sunce764/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">Tutorial</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ Video (1 min)</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">Code</a> / <a href="https://github.com/chaoshengsc/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">Tutorial</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ Video (1 min)</a></p>
           <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>A runnable audit workflow for leakage, near-duplicates and feature attributes.</strong> The configuration-driven CLI supports cross-split near-duplicate checks, patient-group leakage checks and overall/within-class attribute probes. Metric functions include AUROC, Brier score, ECE and patient-cluster bootstrap.</p>
           <p>Includes an English tutorial, running guide and runnable synthetic examples. The companion work <em>From Pixels to Patients</em> was a finalist in the MICCAI Educational Challenge 2026.</p>
           <p class="repo-meta">Predictable attributes do not establish that the classifier relies on them. Synthetic examples are not clinical performance evidence. The full calibration audit is not yet integrated into the CLI.</p><figure class="audit-detail-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener noreferrer"><img src="assets/medaudit-probe.png" alt="Synthetic experiment comparing overall and within-class attribute probes" width="1926" height="874" loading="lazy" /></a><figcaption>Synthetic comparison; open full image. Not clinical performance evidence.</figcaption></figure></div></details>

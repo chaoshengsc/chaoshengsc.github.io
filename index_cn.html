@@ -18,7 +18,7 @@
         <td class="profile-media" valign="top">
           <img class="profile-photo" src="assets/portrait-white.png" alt="盛超的照片" width="1254" height="1254" />
           <nav class="profile-links" aria-label="个人链接">
-            <div><a href="https://github.com/sunce764" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">简历 PDF</a></div>
+            <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">简历 PDF</a></div>
             <div><a href="index.html" lang="en" hreflang="en">English</a></div>
           </nav>
         </td>
@@ -26,7 +26,7 @@
           <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>计算机视觉与图像处理</strong>。</p>
           <p>我在 CT 与内镜图像项目中开展三维分割、图像重建和跨域分类实践，重点解决预处理一致性、评估可信度与算法交付中的问题。</p>
           <p class="availability">寻找深圳实习 · 2026 年 11 月中旬可到岗<br />6 个月 · 每周 5 天，具体可协商</p>
-          <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:sunce764@gmail.com" title="发送邮件至 sunce764@gmail.com">sunce764@gmail.com</a></strong></p>
+          <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
       </tr>
     </table>
@@ -37,11 +37,11 @@
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维图像分割与重建工作站</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维图像分割与重建工作站</a></h3>
           <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
           <p class="project-abstract"><strong>集成三维图像处理与重建算法的桌面工作站。</strong>开发 DICOM 加载、MPR、分割与 ROI 定量功能，加入空间几何校验和工程保存／恢复，并修正分割预处理中缺失的 spacing 重采样。</p>
 
-          <p class="repo-links"><a href="https://github.com/sunce764/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">代码与文档</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">代码与文档</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>连接三维图像处理、重建实验与交互操作的桌面工作站。</strong>实现 DICOM 加载、三平面 MPR、多器官分割、ROI 定量与工程保存／恢复；校验序列身份和空间几何，防止蒙版错位与失效缓存复用。</p>
           <p>实现直接傅里叶与多种迭代 CT 重建算法，结合残差 U-Net 开展稀疏视角实验。分割预处理中补齐训练所需的 spacing 重采样，在历史版本同源公开数据 20 例配对对照中，平均 Dice 从 0.684 提升至 0.840。</p>
           <p class="repo-meta">Dice 与左侧重建截图属于不同实验；上述结果不代表独立临床验证。软件用于教学与科研。</p></div></details>
@@ -50,11 +50,11 @@
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26：跨域图像分类与集成推理</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26：跨域图像分类与集成推理</a></h3>
           <p class="repo-tech">PyTorch · ResNet-50 · GastroNet · Docker</p>
           <p class="project-abstract"><strong>面向跨中心泛化的分类实验与集成推理。</strong>采用近重复分组与双向留一中心评估，统一训练／推理预处理，构建带时间预算与超时降级的 Docker 推理容器。</p>
 
-          <p class="repo-links"><a href="https://github.com/sunce764/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">代码与方法</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">代码与方法</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>面向正样本稀少的内镜图像分类竞赛项目。</strong>任务目标为固定 90% 召回率下的精确率。采用 GastroNet 预训练 ResNet-50，结合类别采样、EMA、近重复图像分组与双向留一中心评估。</p>
           <p>统一训练和推理预处理，完成 12 个随机种子模型概率平均与水平翻转增强；构建 Docker 推理容器，按时间预算调度集成，并配置超时降级与输入输出检查。</p>
           <p class="repo-meta">内部 LOCO 用于方案选择，不代表最终提交权重的独立测试成绩；不列竞赛排名。</p></div></details>
@@ -63,11 +63,11 @@
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">MedAudit：图像分类模型可靠性评估</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">MedAudit：图像分类模型可靠性评估</a></h3>
           <p class="repo-tech">NumPy · Python CLI · Data Leakage · Calibration</p>
           <p class="project-abstract"><strong>将数据泄漏、近重复和特征属性检查整合为命令行工具。</strong>实现总体与类内属性探针，配套英文教程和合成算例，说明评估结果的含义与解释边界。</p>
           <p class="recognition">配套作品入围 MICCAI Educational Challenge 2026 · Finalist</p>
-          <p class="repo-links"><a href="https://github.com/sunce764/medaudit" target="_blank" rel="noopener noreferrer">代码</a> / <a href="https://github.com/sunce764/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">英文教程</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ 一分钟介绍</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">代码</a> / <a href="https://github.com/chaoshengsc/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">英文教程</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ 一分钟介绍</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>将数据泄漏、近重复与特征属性检查整合成可运行的审计流程。</strong>配置驱动的 CLI 支持跨集合近重复、患者分组泄漏和总体／类内属性探针；实现 AUROC、Brier、ECE 与患者簇 Bootstrap 指标函数。</p>
           <p>配套英文教程、运行指南与可运行合成算例。作品 <em>From Pixels to Patients</em> 入围 MICCAI Educational Challenge 2026（Finalist）。</p>
           <p class="repo-meta">属性可预测不等于分类器依赖该属性；合成算例不代表临床性能。完整校准审计尚未接入 CLI。</p><figure class="audit-detail-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener noreferrer"><img src="assets/medaudit-probe.png" alt="总体与类内属性探针的合成实验对照" width="1926" height="874" loading="lazy" /></a><figcaption>合成实验对照；点击查看原图，不代表临床性能。</figcaption></figure></div></details>
