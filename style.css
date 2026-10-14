@@ -446,7 +446,7 @@ body{font-family:"Titillium Web","PingFang SC","Microsoft YaHei",sans-serif;line
 .profile-copy p{margin-bottom:18px}.profile-copy .availability{font-size:14px;color:#555}
 .profile-photo{border-radius:12px}
 .content-section{padding-top:30px}
-.section-translation{margin-left:12px;font-size:15px;font-weight:400;color:#666}
+
 .project-entry{align-items:center;padding-bottom:30px}
 .project-entry+.project-entry{padding-top:30px}
 .project-media{padding-top:0}.repo-image{width:100%;border-radius:4px;max-height:190px}
@@ -466,7 +466,7 @@ body{font-family:"Titillium Web","PingFang SC","Microsoft YaHei",sans-serif;line
 .project-summary-figure>span{font-size:12px;letter-spacing:.04em}
 .project-summary-figure p{font-size:17px;margin:10px 0}
 .project-summary-figure small{font-size:11px}
-@media(max-width:700px){.page-heading{margin:12px 0 20px}.profile-table .profile-media{max-width:220px;padding-bottom:12px}.profile-table .profile-copy{padding-top:10px}.project-media{max-width:340px;margin-bottom:22px}.project-copy .project-abstract{font-size:15px}.section-translation{font-size:13px;margin-left:8px}.project-entry{padding-bottom:28px}}
+@media(max-width:700px){.page-heading{margin:12px 0 20px}.profile-table .profile-media{max-width:220px;padding-bottom:12px}.profile-table .profile-copy{padding-top:10px}.project-media{max-width:340px;margin-bottom:22px}.project-copy .project-abstract{font-size:15px}.project-entry{padding-bottom:28px}}
 
 /* Consistent project overviews; real interface and labelled workflow schematics. */
 .project-overview{margin:0;background:transparent;border:0;border-radius:0;padding:15px;min-height:255px;display:flex;flex-direction:column;justify-content:center}

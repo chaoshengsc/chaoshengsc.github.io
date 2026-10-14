@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="盛超，计算机视觉与图像算法实习。项目涵盖三维分割、图像重建、跨域分类、模型可靠性评估与具身智能策略评测。" />
   <title>盛超 | Chao Sheng</title>
-  <link rel="stylesheet" href="style.css?v=2026-10-14" />
+  <link rel="stylesheet" href="style.css?v=2026-10-14b" />
   <link rel="alternate" hreflang="en" href="index.html" />
   <link rel="alternate" hreflang="zh-CN" href="index_cn.html" />
 </head>
@@ -32,13 +32,13 @@
     </table>
     <hr />
     <section class="content-section projects-section" id="research" aria-labelledby="research-title">
-      <h2 id="research-title">精选项目 <span class="section-translation" lang="en">Selected Projects</span></h2>
+      <h2 id="research-title">精选项目</h2>
 
       <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">工作站</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维图像分割与重建工作站</a></h3>
-          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
+          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT 重建</p>
           <p class="project-abstract"><strong>集成三维图像处理与重建算法的桌面工作站。</strong>开发 DICOM 加载、MPR、分割与 ROI 定量功能，加入空间几何校验和工程保存／恢复，并修正分割预处理中缺失的 spacing 重采样。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">代码与文档</a></p>
@@ -62,7 +62,7 @@
       </article>
 
       <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">相机消融</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">视觉-语言-动作模型的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · 具身智能</p>
@@ -78,9 +78,9 @@
       <article class="project-entry project-entry-text">
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">MedAudit：图像分类模型可靠性评估</a></h3>
-          <p class="repo-tech">NumPy · Python CLI · Data Leakage · Calibration</p>
+          <p class="repo-tech">NumPy · Python CLI · 数据泄漏 · 校准</p>
           <p class="project-abstract"><strong>将数据泄漏、近重复和特征属性检查整合为命令行工具。</strong>实现总体与类内属性探针，配套英文教程和合成算例，说明评估结果的含义与解释边界。</p>
-          <p class="recognition">配套作品入围 MICCAI Educational Challenge 2026 · Finalist</p>
+          <p class="recognition">配套作品入围 MICCAI Educational Challenge 2026</p>
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">代码</a> / <a href="https://github.com/chaoshengsc/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">英文教程</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ 一分钟介绍</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>将数据泄漏、近重复与特征属性检查整合成可运行的审计流程。</strong>配置驱动的 CLI 支持跨集合近重复、患者分组泄漏和总体／类内属性探针；实现 AUROC、Brier、ECE 与患者簇 Bootstrap 指标函数。</p>
           <p>配套英文教程、运行指南与可运行合成算例。作品 <em>From Pixels to Patients</em> 入围 MICCAI Educational Challenge 2026（Finalist）。</p>
