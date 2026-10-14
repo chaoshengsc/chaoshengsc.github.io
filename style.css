@@ -317,14 +317,6 @@ hr {
   vertical-align: middle;
 }
 
-.repo-links a::before {
-  content: "";
-  flex: 0 0 16px;
-  width: 16px;
-  height: 16px;
-  background: url("assets/vendor/github/favicon.svg") center / contain no-repeat;
-}
-
 .skills-list {
   margin: 0;
 }
