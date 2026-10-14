@@ -73,7 +73,7 @@
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>相机全涂黑后，四个策略中三个完全失效。</strong>π0.5、OpenVLA、SmolVLA 降至 0%；LeRobot 公开的 π0 权重在五次运行中仍有 53–56% 的成功率，正常输入时为 71–76%。冻结首帧同样让 π0.5 和 SmolVLA 降至 0%。</p>
           <p>用动态时间规整比较末端执行器轨迹，界定 π0 结果的含义。全部实验在一台 RTX A5000 工作站上以 EGL 无头渲染完成，只用包装脚本、不改上游源码；公开的结果表由 CI 从原始评测文件重算核对。</p>
-          <p class="repo-meta">只用一个基准套件和一个种子，每次消融 100 回合，约 13 个百分点以内的差异没有意义。公开 π0 权重训练不足，结果不代表所有 π0。本项目只做评测，未训练新策略。</p></div></details>
+          <p class="repo-meta">只用一个基准套件和一个种子，每次消融 100 回合，约 13 个百分点以内的差异没有意义。公开 π0 权重训练不足，结果不代表所有 π0。文中结果全部来自公开权重。</p></div></details>
         </div>
       </article>
 

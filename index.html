@@ -73,7 +73,7 @@
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Code &amp; results</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
           <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>With all cameras blacked out, three of the four policies fail completely.</strong> π0.5, OpenVLA and SmolVLA dropped to 0%; the public LeRobot π0 checkpoint still succeeded in 53–56% of episodes across five runs, against 71–76% with normal input. Freezing the first frame also took π0.5 and SmolVLA to 0%.</p>
           <p>Compared end-effector paths with dynamic time warping to bound what the π0 result means. All runs used one RTX A5000 workstation with headless EGL rendering and wrapper scripts, without modifying upstream code. CI recomputes the published tables from the raw evaluation files.</p>
-          <p class="repo-meta">One benchmark suite and one seed, 100 episodes per ablation run; differences below about 13 points are not meaningful. The public π0 checkpoint is undertrained, so its result does not describe π0 in general. Evaluation only; no new policy was trained.</p></div></details>
+          <p class="repo-meta">One benchmark suite and one seed, 100 episodes per ablation run; differences below about 13 points are not meaningful. The public π0 checkpoint is undertrained, so its result does not describe π0 in general. All reported results use public checkpoints.</p></div></details>
         </div>
       </article>
 
