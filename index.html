@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Chao Sheng — computer vision and image algorithms. Projects in 3D segmentation, reconstruction, cross-domain classification, model reliability and embodied-AI policy evaluation.">
   <title>Chao Sheng | Computer Vision</title>
-  <link rel="stylesheet" href="style.css?v=2026-10-14b">
+  <link rel="stylesheet" href="style.css?v=2026-10-14c">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="alternate" hreflang="en" href="index.html">
   <link rel="alternate" hreflang="zh-CN" href="index_cn.html">
 </head>
@@ -16,7 +18,7 @@
     <table class="profile-table" role="presentation">
       <tr>
         <td class="profile-media" valign="top">
-          <img class="profile-photo" src="assets/portrait-cutout.png" alt="Portrait of Chao Sheng" width="800" height="800">
+          <picture><source srcset="assets/portrait-cutout.webp" type="image/webp" /><img class="profile-photo" src="assets/portrait-cutout.png" alt="Portrait of Chao Sheng" width="480" height="480">
           <nav class="profile-links" aria-label="Personal links">
             <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></div>
             <div><a href="index_cn.html" lang="zh-CN" hreflang="zh-CN">中文</a></div>
@@ -35,7 +37,7 @@
       <h2 id="research-title">Selected Projects</h2>
 
       <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></picture></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
           <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
@@ -62,13 +64,13 @@
       </article>
 
       <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout.gif" alt="Three runs of the same LIBERO task: pi0.5 with normal cameras succeeds, pi0.5 with blacked-out cameras fails, pi0 with blacked-out cameras still succeeds" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">Simulator recording · Open results dashboard</p></div>
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout.gif" alt="Three runs of the same LIBERO task: pi0.5 with normal cameras succeeds, pi0.5 with blacked-out cameras fails, pi0 with blacked-out cameras still succeeds" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">Simulator recording · Open results dashboard</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Camera-input Ablation of Vision-Language-Action Policies</a></h3>
           <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · Embodied AI</p>
           <p class="project-abstract"><strong>Testing whether robot policies actually use their cameras.</strong> Reproduced five public policy checkpoints, with 95% intervals overlapping the published benchmarks, then blacked out, froze, noised or removed camera inputs for π0, π0.5, OpenVLA and SmolVLA on LIBERO-Spatial.</p>
 
-          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Code &amp; results</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Code &amp; results</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
           <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>With all cameras blacked out, three of the four policies fail completely.</strong> π0.5, OpenVLA and SmolVLA dropped to 0%; the public LeRobot π0 checkpoint still succeeded in 53–56% of episodes across five runs, against 71–76% with normal input. Freezing the first frame also took π0.5 and SmolVLA to 0%.</p>
           <p>Compared end-effector paths with dynamic time warping to bound what the π0 result means. All runs used one RTX A5000 workstation with headless EGL rendering and wrapper scripts, without modifying upstream code. CI recomputes the published tables from the raw evaluation files.</p>
           <p class="repo-meta">One benchmark suite and one seed, 100 episodes per ablation run; differences below about 13 points are not meaningful. The public π0 checkpoint is undertrained, so its result does not describe π0 in general. Evaluation only; no new policy was trained.</p></div></details>

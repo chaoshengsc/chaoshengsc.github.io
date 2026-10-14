@@ -495,3 +495,4 @@ body{font-family:"Titillium Web","PingFang SC","Microsoft YaHei",sans-serif;line
 .profile-links{line-height:1.6}
 .profile-links a{padding:3px 4px}
 .profile-links>div+div{margin-top:2px}
+.profile-media picture{display:block}

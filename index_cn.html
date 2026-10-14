@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="盛超，计算机视觉与图像算法实习。项目涵盖三维分割、图像重建、跨域分类、模型可靠性评估与具身智能策略评测。" />
   <title>盛超 | 计算机视觉</title>
-  <link rel="stylesheet" href="style.css?v=2026-10-14b" />
+  <link rel="stylesheet" href="style.css?v=2026-10-14c" />
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="alternate" hreflang="en" href="index.html" />
   <link rel="alternate" hreflang="zh-CN" href="index_cn.html" />
 </head>
@@ -16,7 +18,7 @@
     <table class="profile-table" role="presentation">
       <tr>
         <td class="profile-media" valign="top">
-          <img class="profile-photo" src="assets/portrait-cutout.png" alt="盛超的照片" width="800" height="800" />
+          <picture><source srcset="assets/portrait-cutout.webp" type="image/webp" /><img class="profile-photo" src="assets/portrait-cutout.png" alt="盛超的照片" width="480" height="480" /></picture>
           <nav class="profile-links" aria-label="个人链接">
             <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">简历 PDF</a></div>
             <div><a href="index.html" lang="en" hreflang="en">English</a></div>
@@ -66,7 +68,7 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">视觉-语言-动作模型的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · 具身智能</p>
-          <p class="project-abstract"><strong>检验机器人策略是否真的在用相机。</strong>先复现五个公开策略权重（成功率区间与公开基准重叠），再在 LIBERO-Spatial 上对 π0、π0.5、OpenVLA、SmolVLA 做相机涂黑、冻结、加噪与单路去除。</p>
+          <p class="project-abstract"><strong>检验机器人策略是否真的在用相机。</strong>先复现五个公开策略权重（成功率 95% 置信区间与公开基准重叠），再在 LIBERO-Spatial 上对 π0、π0.5、OpenVLA、SmolVLA 做相机涂黑、冻结、加噪与单路去除。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>相机全涂黑后，四个策略中三个完全失效。</strong>π0.5、OpenVLA、SmolVLA 降至 0%；LeRobot 公开的 π0 权重在五次运行中仍有 53–56% 的成功率，正常输入时为 71–76%。冻结首帧同样让 π0.5 和 SmolVLA 降至 0%。</p>
