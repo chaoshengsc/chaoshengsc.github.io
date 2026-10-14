@@ -16,14 +16,14 @@
     <table class="profile-table" role="presentation">
       <tr>
         <td class="profile-media" valign="top">
-          <img class="profile-photo" src="assets/portrait-white.png" alt="盛超的照片" width="1254" height="1254" />
+          <img class="profile-photo" src="assets/portrait-cutout.png" alt="盛超的照片" width="800" height="800" />
           <nav class="profile-links" aria-label="个人链接">
             <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">简历 PDF</a></div>
             <div><a href="index.html" lang="en" hreflang="en">English</a></div>
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>计算机视觉与图像处理</strong>。</p>
+          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>计算机视觉与图像处理</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
           <p>我在 CT 与内镜图像项目中开展三维分割、图像重建和跨域分类实践，重点解决预处理一致性、评估可信度与算法交付中的问题。</p>
           <p class="availability">寻找深圳实习 · 2026 年 11 月中旬可到岗<br />6 个月 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
@@ -58,6 +58,20 @@
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>面向正样本稀少的内镜图像分类竞赛项目。</strong>任务目标为固定 90% 召回率下的精确率。采用 GastroNet 预训练 ResNet-50，结合类别采样、EMA、近重复图像分组与双向留一中心评估。</p>
           <p>统一训练和推理预处理，完成 12 个随机种子模型概率平均与水平翻转增强；构建 Docker 推理容器，按时间预算调度集成，并配置超时降级与输入输出检查。</p>
           <p class="repo-meta">内部 LOCO 用于方案选择，不代表最终提交权重的独立测试成绩；不列竞赛排名。</p></div></details>
+        </div>
+      </article>
+
+      <article class="project-entry">
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">视觉-语言-动作模型的相机输入消融</a></h3>
+          <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · 具身智能</p>
+          <p class="project-abstract"><strong>检验机器人策略是否真的在用相机。</strong>先复现五个公开策略权重（成功率区间与公开基准重叠），再在 LIBERO-Spatial 上对 π0、π0.5、OpenVLA、SmolVLA 做相机涂黑、冻结、加噪与单路去除。</p>
+
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>相机全涂黑后，四个策略中三个完全失效。</strong>π0.5、OpenVLA、SmolVLA 降至 0%；LeRobot 公开的 π0 权重在五次运行中仍有 53–56% 的成功率，正常输入时为 71–76%。冻结首帧同样让 π0.5 和 SmolVLA 降至 0%。</p>
+          <p>用动态时间规整比较末端执行器轨迹，界定 π0 结果的含义。全部实验在一台 RTX A5000 工作站上以 EGL 无头渲染完成，只用包装脚本、不改上游源码；公开的结果表由 CI 从原始评测文件重算核对。</p>
+          <p class="repo-meta">只用一个基准套件和一个种子，每次消融 100 回合，约 13 个百分点以内的差异没有意义。公开 π0 权重训练不足，结果不代表所有 π0。本项目只做评测，未训练新策略。</p></div></details>
         </div>
       </article>
 
