@@ -4,7 +4,8 @@
   let switching = false;
   const selector = '.profile-links a[hreflang]';
   const load = (url) => {
-    if (!cache.has(url)) cache.set(url, fetch(url).then(response => {
+    // Revalidate with the server so a swap never shows a page older than the live one.
+    if (!cache.has(url)) cache.set(url, fetch(url, { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error('Language page unavailable');
       return response.text();
     }).catch(error => { cache.delete(url); throw error; }));
