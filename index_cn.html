@@ -68,12 +68,13 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">VLA 模型的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · 具身智能</p>
-          <p class="project-abstract"><strong>检验机器人策略是否真的在用相机。</strong>先复现五个公开策略权重（成功率 95% 置信区间与公开基准重叠），再在 LIBERO-Spatial 上对 π0、π0.5、OpenVLA、SmolVLA 做相机涂黑、冻结、加噪与单路去除。</p>
+          <p class="project-abstract"><strong>检验相机输入变化如何影响机器人策略。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>相机全涂黑后，四个策略中三个完全失效。</strong>π0.5、OpenVLA、SmolVLA 降至 0%；LeRobot 公开的 π0 权重在五次运行中仍有 53–56% 的成功率，正常输入时为 71–76%。冻结首帧同样让 π0.5 和 SmolVLA 降至 0%。</p>
-          <p>用动态时间规整比较末端执行器轨迹，界定 π0 结果的含义。全部实验在一台 RTX A5000 工作站上以 EGL 无头渲染完成，只用包装脚本、不改上游源码；公开的结果表由 CI 从原始评测文件重算核对。</p>
-          <p class="repo-meta">只用一个基准套件和一个种子，每次消融 100 回合，约 13 个百分点以内的差异没有意义。公开 π0 权重训练不足，结果不代表所有 π0。文中结果全部来自公开权重。</p></div></details>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>π0.5 v044 的腕部屏蔽实验：98.4% → 4.6%。</strong>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
+          <p>在消融中发现 LeRobot 缺失相机键会使后续图像槽位前移；个人负责发现问题、确定修复范围、审阅改动并提交覆盖 6 策略的修复 PR。提交前回归由旧实现 21 失败／6 通过变为修后 27/27 通过；<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
+          <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表、协议审计及 CI 重算入口随 <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">v1.5.3 证据冻结版</a> 公开。</p>
+          <p class="repo-meta">结果限定于所测检查点与协议，不作统一模型排名。π0 五次全黑复用相同 100 初态；官方与 LeRobot 同时改变权重和管线，不能将差异唯一归因于转换或训练。首帧冻结也改变图像—状态同步；回放结果不证明模型内部采用回放机制。独立微调项目不计入本次冻结。</p></div></details>
         </div>
       </article>
 
