@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Chao Sheng — computer vision and image algorithms. Projects in 3D segmentation, reconstruction, cross-domain classification, model reliability and embodied-AI policy evaluation.">
-  <title>Chao Sheng | Computer Vision</title>
+  <meta name="description" content="Chao Sheng — embodied AI and robot learning. Projects in VLA policy evaluation, camera-input ablation, simulation and reproducible experiments.">
+  <title>Chao Sheng | Embodied AI</title>
   <link rel="stylesheet" href="style.css?v=2026-10-14c">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -18,16 +18,16 @@
     <table class="profile-table" role="presentation">
       <tr>
         <td class="profile-media" valign="top">
-          <picture><source srcset="assets/portrait-cutout.webp" type="image/webp" /><img class="profile-photo" src="assets/portrait-cutout.png" alt="Portrait of Chao Sheng" width="480" height="480">
+          <picture><source srcset="assets/portrait-cutout.webp" type="image/webp" /><img class="profile-photo" src="assets/portrait-cutout.png" alt="Portrait of Chao Sheng" width="480" height="480"></picture>
           <nav class="profile-links" aria-label="Personal links">
             <div><a href="https://github.com/chaoshengsc" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="assets/sheng-chao-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></div>
             <div><a href="index_cn.html" lang="zh-CN" hreflang="zh-CN">中文</a></div>
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong>, graduating in 2027. I focus on <strong>computer vision and image processing</strong>. I have received an offer for the Master of Data Science at <strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">The University of Queensland</a></strong> (July 2027 intake).</p>
-          <p>I work on 3D segmentation, reconstruction and cross-domain classification using CT and endoscopic images, with an emphasis on consistent preprocessing, reliable evaluation and working software.</p>
-          <p class="availability">Seeking an internship in Shenzhen · Available from mid-November 2026<br>Six months or longer · Five days per week, negotiable</p>
+          <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong>, graduating in 2027. I focus on <strong>embodied AI and robot learning</strong>. I have received an offer for the Master of Data Science at <strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">The University of Queensland</a></strong> (July 2027 intake).</p>
+          <p>I evaluate VLA policies and camera-input interventions with LeRobot, OpenPI, MuJoCo and LIBERO, focusing on experiment design, debugging and result verification. Earlier projects cover 3D image processing, model training and packaged inference.</p>
+          <p class="availability">Seeking an embodied-AI internship in Shenzhen · Available to start soon<br>Six months or longer · Five days per week, negotiable</p>
           <p class="contact" id="contact"><strong>Email: </strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="Send email to chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
       </tr>
@@ -37,7 +37,22 @@
       <h2 id="research-title">Selected Projects</h2>
 
       <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></picture></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout.gif" alt="Three runs of the same LIBERO task: pi0.5 with normal cameras succeeds, pi0.5 with blacked-out cameras fails, pi0 with blacked-out cameras still succeeds" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">Simulator recording · Open results dashboard</p></div>
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Camera-input Ablation of Vision-Language-Action (VLA) Policies</a></h3>
+          <p class="repo-tech">LeRobot · OpenPI · MuJoCo · LIBERO · VLA</p>
+          <p class="project-abstract"><strong>Testing how camera interventions change robot-policy performance.</strong> Ran a four-model blackout exploration and paired wrist-camera experiments for π0 and π0.5 on LIBERO-Spatial, separating black images, fixed-slot masking and first-frame freezing.</p>
+
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Code &amp; results</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>Wrist masking for π0.5 v044: 98.4% → 4.6%.</strong> Normal input, wrist masking and wrist first-frame freezing each used 500 episodes (10 tasks × 50 initial states), with 492, 23 and 0 successes. Masking minus normal was −93.8 percentage points, with a paired 95% interval of [−96.0, −91.6]. The corresponding π0 v044 rates were 72.0%, 71.2% and 72.8%. The main view kept updating.</p>
+          <p>Found that missing camera keys in LeRobot could shift later images into earlier slots. My work was identifying the issue, defining the fix scope, reviewing changes and submitting a repair PR covering six policies. Pre-submission regression tests changed from 21 failures / 6 passes on the old implementation to 27/27 passes after the fix; <a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> is not yet merged.</p>
+          <p>Added an official π0/OpenPI comparison on 100 matched initial-state indices: official π0 scored 93/100 normally and 0/100 under blackout; LeRobot π0 v044 scored 65/100 normally and 53–56/100 in five blackout repeats. State-freezing controls support sensitivity to state updates; selected fixed-action replay succeeded on 262/400 selection-excluded states. Episode records, analysis tables, protocol audits and CI recomputation are archived in the <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE.md" target="_blank" rel="noopener noreferrer">v1.5.3 evidence freeze</a>.</p>
+          <p class="repo-meta">Results are checkpoint- and protocol-specific, not a uniform model ranking. The five π0 blackout repeats reuse the same 100 initial states. Official and LeRobot comparisons change both weights and pipelines, so differences cannot be uniquely attributed to conversion or training. First-frame freezing also disrupts image–state synchronization; replay success does not identify the policy’s internal mechanism. The separate fine-tuning project is outside this freeze.</p></div></details>
+        </div>
+      </article>
+
+      <article class="project-entry">
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
           <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
@@ -63,20 +78,7 @@
         </div>
       </article>
 
-      <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout.gif" alt="Three runs of the same LIBERO task: pi0.5 with normal cameras succeeds, pi0.5 with blacked-out cameras fails, pi0 with blacked-out cameras still succeeds" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">Simulator recording · Open results dashboard</p></div>
-        <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Camera-input Ablation of Vision-Language-Action (VLA) Policies</a></h3>
-          <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · Embodied AI</p>
-          <p class="project-abstract"><strong>Testing how camera interventions change robot-policy performance.</strong> Ran a four-model blackout exploration and paired wrist-camera experiments for π0 and π0.5 on LIBERO-Spatial, separating black images, fixed-slot masking and first-frame freezing.</p>
 
-          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">Code &amp; results</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer">Dashboard</a></p>
-          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p><strong>Wrist masking for π0.5 v044: 98.4% → 4.6%.</strong> Normal input, wrist masking and wrist first-frame freezing each used 500 episodes (10 tasks × 50 initial states), with 492, 23 and 0 successes. Masking minus normal was −93.8 percentage points, with a paired 95% interval of [−96.0, −91.6]. The corresponding π0 v044 rates were 72.0%, 71.2% and 72.8%. The main view kept updating.</p>
-          <p>Found that missing camera keys in LeRobot could shift later images into earlier slots. My work was identifying the issue, defining the fix scope, reviewing changes and submitting a repair PR covering six policies. Pre-submission regression tests changed from 21 failures / 6 passes on the old implementation to 27/27 passes after the fix; <a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> is not yet merged.</p>
-          <p>Added an official π0/OpenPI comparison on 100 matched initial-state indices: official π0 scored 93/100 normally and 0/100 under blackout; LeRobot π0 v044 scored 65/100 normally and 53–56/100 in five blackout repeats. State-freezing controls support sensitivity to state updates; selected fixed-action replay succeeded on 262/400 selection-excluded states. Episode records, analysis tables, protocol audits and CI recomputation are archived in the <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE.md" target="_blank" rel="noopener noreferrer">v1.5.3 evidence freeze</a>.</p>
-          <p class="repo-meta">Results are checkpoint- and protocol-specific, not a uniform model ranking. The five π0 blackout repeats reuse the same 100 initial states. Official and LeRobot comparisons change both weights and pipelines, so differences cannot be uniquely attributed to conversion or training. First-frame freezing also disrupts image–state synchronization; replay success does not identify the policy’s internal mechanism. The separate fine-tuning project is outside this freeze.</p></div></details>
-        </div>
-      </article>
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">

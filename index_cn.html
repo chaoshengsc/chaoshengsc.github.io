@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="盛超，计算机视觉与图像算法实习。项目涵盖三维分割、图像重建、跨域分类、模型可靠性评估与具身智能策略评测。" />
-  <title>盛超 | 计算机视觉</title>
+  <meta name="description" content="盛超，具身智能实习。关注 VLA 策略评测、机器人学习与仿真，开展相机输入消融、实验复现与结果核验。" />
+  <title>盛超 | 具身智能</title>
   <link rel="stylesheet" href="style.css?v=2026-10-14c" />
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -25,9 +25,9 @@
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>计算机视觉与图像处理</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
-          <p>我在 CT 与内镜图像项目中开展三维分割、图像重建和跨域分类实践，重点解决预处理一致性、评估可信度与算法交付中的问题。</p>
-          <p class="availability">寻找深圳实习 · 2026 年 11 月中旬可到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
+          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>具身智能与机器人学习</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
+          <p>近期基于 LeRobot、OpenPI、MuJoCo 与 LIBERO 开展 VLA 策略评测和相机输入消融，重点关注实验设计、问题定位与结果核验。既有项目涵盖三维图像处理、模型训练与推理交付。</p>
+          <p class="availability">寻找深圳具身智能实习 · 可尽快到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
       </tr>
@@ -35,6 +35,21 @@
     <hr />
     <section class="content-section projects-section" id="research" aria-labelledby="research-title">
       <h2 id="research-title">精选项目</h2>
+
+      <article class="project-entry">
+        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">相机消融</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">具身智能：VLA 模型的相机输入消融</a></h3>
+          <p class="repo-tech">LeRobot · OpenPI · MuJoCo · LIBERO · VLA</p>
+          <p class="project-abstract"><strong>检验相机输入变化如何影响机器人策略。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
+
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>π0.5 v044 的腕部屏蔽实验：98.4% → 4.6%。</strong>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
+          <p>在消融中发现 LeRobot 缺失相机键会使后续图像槽位前移；个人负责发现问题、确定修复范围、审阅改动并提交覆盖 6 策略的修复 PR。提交前回归由旧实现 21 失败／6 通过变为修后 27/27 通过；<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
+          <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表、协议审计及 CI 重算入口随 <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">v1.5.3 证据冻结版</a> 公开。</p>
+          <p class="repo-meta">结果限定于所测检查点与协议，不作统一模型排名。π0 五次全黑复用相同 100 初态；官方与 LeRobot 同时改变权重和管线，不能将差异唯一归因于转换或训练。首帧冻结也改变图像—状态同步；回放结果不证明模型内部采用回放机制。独立微调项目不计入本次冻结。</p></div></details>
+        </div>
+      </article>
 
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">工作站</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
@@ -63,20 +78,7 @@
         </div>
       </article>
 
-      <article class="project-entry">
-        <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">相机消融</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
-        <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">VLA 模型的相机输入消融</a></h3>
-          <p class="repo-tech">LeRobot · OpenVLA · MuJoCo · LIBERO · 具身智能</p>
-          <p class="project-abstract"><strong>检验相机输入变化如何影响机器人策略。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
 
-          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>π0.5 v044 的腕部屏蔽实验：98.4% → 4.6%。</strong>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
-          <p>在消融中发现 LeRobot 缺失相机键会使后续图像槽位前移；个人负责发现问题、确定修复范围、审阅改动并提交覆盖 6 策略的修复 PR。提交前回归由旧实现 21 失败／6 通过变为修后 27/27 通过；<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
-          <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表、协议审计及 CI 重算入口随 <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">v1.5.3 证据冻结版</a> 公开。</p>
-          <p class="repo-meta">结果限定于所测检查点与协议，不作统一模型排名。π0 五次全黑复用相同 100 初态；官方与 LeRobot 同时改变权重和管线，不能将差异唯一归因于转换或训练。首帧冻结也改变图像—状态同步；回放结果不证明模型内部采用回放机制。独立微调项目不计入本次冻结。</p></div></details>
-        </div>
-      </article>
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
