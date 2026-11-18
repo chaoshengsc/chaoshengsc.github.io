@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="盛超，具身智能实习。关注 VLA 策略评测、机器人学习与仿真，开展相机输入消融、实验复现与结果核验。" />
+  <meta name="description" content="盛超，具身智能实习。关注 VLA 策略微调、仿真闭环评测与相机输入消融。" />
   <title>盛超 | 具身智能</title>
   <link rel="stylesheet" href="style.css?v=2026-10-14c" />
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
@@ -25,8 +25,8 @@
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业 2027 届本科生，关注<strong>具身智能与机器人学习</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
-          <p>近期基于 LeRobot、OpenPI、MuJoCo 与 LIBERO 开展 VLA 策略评测和相机输入消融，重点关注实验设计、问题定位与结果核验。既有项目涵盖三维图像处理、模型训练与推理交付。</p>
+          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业本科生（2022–2027），关注<strong>具身智能与机器人学习</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
+          <p>近期在单卡上完成 π0.5 的 LoRA 微调与仿真闭环评测，并独立开展 VLA 相机输入消融。既有项目涵盖三维图像处理、模型训练与推理交付。</p>
           <p class="availability">寻找深圳具身智能实习 · 可尽快到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
@@ -35,6 +35,18 @@
     <hr />
     <section class="content-section projects-section" id="research" aria-labelledby="research-title">
       <h2 id="research-title">精选项目</h2>
+
+      <article class="project-entry project-entry-text">
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">π0.5 在 LIBERO 上的 LoRA 微调</a></h3>
+          <p class="repo-tech">OpenPI · JAX · LoRA · LIBERO-Spatial · 2026.11</p>
+          <p class="project-abstract"><strong>单张 RTX A5000 完成 2,000 次优化器更新。</strong>在同 400 个 LIBERO-Spatial 留出初态上，官方起点的第 0 步对照成功 0/400，训练终点成功 382/400（95.50%）。</p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同初态对照视频</a></p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>基于 OpenPI 的 <code>pi05_base</code> 冻结底座，采用全线性层 LoRA（rank 64），用梯度累积实现有效批量 256。按完整示范划分 1,608 条训练、85 条离线验证，归一化只用训练数据拟合，保存优化器与采样状态供续训。</p>
+          <p>对第 0 步与训练终点的 399 对首观测一致回合，十任务等权成功率增加 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。比较六个检查点并换两个推理种子复测 1,250 与 2,000 步，两者平均差的区间仍跨 0。</p>
+          <p class="repo-meta">结果限于一次训练与十个已知仿真任务。冻结版公开 5,100 条计分回合、复算脚本及对照视频，支持复算已发布结果。</p></div></details>
+        </div>
+      </article>
 
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">相机消融</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
@@ -55,7 +67,7 @@
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">工作站</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维图像分割与重建工作站</a></h3>
-          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT 重建</p>
+          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT 重建 · 2026.05–2026.08</p>
           <p class="project-abstract"><strong>集成三维图像处理与重建算法的桌面工作站。</strong>开发 DICOM 加载、MPR、分割与 ROI 定量功能，加入空间几何校验和工程保存／恢复，并修正分割预处理中缺失的 spacing 重采样。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">代码与文档</a></p>

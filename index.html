@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Chao Sheng — embodied AI and robot learning. Projects in VLA policy evaluation, camera-input ablation, simulation and reproducible experiments.">
+  <meta name="description" content="Chao Sheng — embodied AI and robot learning. Projects in VLA fine-tuning, closed-loop simulation evaluation and camera-input ablation.">
   <title>Chao Sheng | Embodied AI</title>
   <link rel="stylesheet" href="style.css?v=2026-10-14c">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
@@ -25,8 +25,8 @@
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong>, graduating in 2027. I focus on <strong>embodied AI and robot learning</strong>. I have received an offer for the Master of Data Science at <strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">The University of Queensland</a></strong> (July 2027 intake).</p>
-          <p>I evaluate VLA policies and camera-input interventions with LeRobot, OpenPI, MuJoCo and LIBERO, focusing on experiment design, debugging and result verification. Earlier projects cover 3D image processing, model training and packaged inference.</p>
+          <p>I am Chao Sheng, a Biomedical Engineering undergraduate at <strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">Guangdong Medical University</a></strong> (2022–2027). I focus on <strong>embodied AI and robot learning</strong>. I have received an offer for the Master of Data Science at <strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">The University of Queensland</a></strong> (July 2027 intake).</p>
+          <p>I fine-tuned π0.5 with LoRA on a single GPU and evaluated it in closed-loop simulation. A separate project studies camera inputs in VLA policies. Earlier projects cover 3D image processing, model training and packaged inference.</p>
           <p class="availability">Seeking an embodied-AI internship in Shenzhen · Available to start soon<br>Six months or longer · Five days per week, negotiable</p>
           <p class="contact" id="contact"><strong>Email: </strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="Send email to chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
@@ -35,6 +35,18 @@
     <hr>
     <section class="content-section projects-section" id="research" aria-labelledby="research-title">
       <h2 id="research-title">Selected Projects</h2>
+
+      <article class="project-entry project-entry-text">
+        <div class="project-copy">
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">LoRA Fine-Tuning of π0.5 on LIBERO</a></h3>
+          <p class="repo-tech">OpenPI · JAX · LoRA · LIBERO-Spatial · Nov 2026</p>
+          <p class="project-abstract"><strong>Completed 2,000 optimizer updates on one RTX A5000.</strong> On the same 400 held-out LIBERO-Spatial initial states, the official starting policy at step zero succeeded in 0/400 episodes and the training endpoint in 382/400 (95.50%).</p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">Release v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">Evaluation results</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">Matched rollout video</a></p>
+          <details class="project-details"><summary>Implementation &amp; validation</summary><div class="detail-body"><p>Kept the OpenPI <code>pi05_base</code> weights frozen and applied rank-64 LoRA to all linear layers, reaching an effective batch of 256 through gradient accumulation. Split 1,608 training and 85 offline validation demonstrations by full trajectory, fit normalization on training data, and saved optimizer and sampler state for resumption.</p>
+          <p>Across 399 pairs with identical first observations, the task-weighted increase over step zero was 95.50 percentage points (95% paired interval [93.50, 97.25]). Six checkpoints were compared. The interval for the average difference between steps 1,250 and 2,000 across two additional inference seeds includes zero.</p>
+          <p class="repo-meta">Results cover one training run and ten known simulation tasks. The release includes 5,100 scored outcomes, analysis scripts and paired videos for reproducing the published analysis.</p></div></details>
+        </div>
+      </article>
 
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">CAMERA ABLATION</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=en" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout.gif" alt="Three runs of the same LIBERO task: pi0.5 with normal cameras succeeds, pi0.5 with blacked-out cameras fails, pi0 with blacked-out cameras still succeeds" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">Simulator recording · Open results dashboard</p></div>
@@ -55,7 +67,7 @@
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">WORKSTATION</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT reconstruction interface with a synthetic Shepp–Logan phantom" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">Actual interface · Open full image</p></div>
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">3D Segmentation &amp; Reconstruction Workstation</a></h3>
-          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction</p>
+          <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT Reconstruction · 2026.05–2026.08</p>
           <p class="project-abstract"><strong>A desktop workbench integrating 3D image processing and reconstruction.</strong> Implemented DICOM loading, MPR, segmentation and ROI measurements, added spatial-geometry checks and project save/restore, and corrected missing spacing resampling in segmentation preprocessing.</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">Code &amp; documentation</a></p>
