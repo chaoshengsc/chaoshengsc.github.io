@@ -25,7 +25,7 @@
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>我关注<strong>具身智能与机器人学习</strong>。我用双相机示范在单张 GPU 上微调机器人操作策略，也在仿真中比较了不同策略对腕部相机输入的依赖。</p>
+          <p>我关注<strong>具身智能与机器人学习</strong>。我用双相机示范在单张 GPU 上微调机器人操作策略，也在仿真中比较了不同策略在屏蔽腕部相机输入前后的成功率。</p>
           <p>我在<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>读生物医学工程本科（2022–2027），已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士拟录取，预计 2027 年 7 月入学。</p>
           <p class="availability">寻找深圳具身智能实习 · 可尽快到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
@@ -40,11 +40,11 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">π0.5 在 LIBERO 上的 LoRA 微调</a></h3>
           <p class="repo-tech">OpenPI · JAX · LIBERO-Spatial · 2026.11</p>
-          <p class="project-abstract"><strong>用单张 RTX A5000 训练机器人策略，根据相机画面和语言指令完成取放。</strong>在 10 项 LIBERO-Spatial 仿真任务的同一组 400 个留出初态上按相同流程评测，微调前成功 0 次，2,000 次更新后成功 382 次（95.5%）。</p>
-          <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同初态对照视频</a></p>
+          <p class="project-abstract"><strong>用单张 RTX A5000 微调机器人策略，让它根据相机画面和指令，从不同位置取黑碗并放到盘上。</strong>按同一流程评测 10 项 LIBERO-Spatial 仿真任务的 400 个固定初态，微调前成功 0 次，2,000 次更新后成功 382 次（95.5%）。</p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同一初态下的取放成功与超时</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>以场景图、腕部图和指令为输入，以后续 10 步示范动作为流匹配的训练目标。按完整轨迹划分 1,608 条训练示范和 85 条离线验证示范，仅用训练集拟合归一化统计量。冻结 OpenPI 的 <code>pi05_base</code>，为视觉塔、语言主干和动作专家等模块的 456 个线性矩阵配置 rank-64 LoRA。每个微批 8 个样本，累积 32 次梯度实现有效批量 256。恢复模型、优化器、采样器和随机状态后续训至 2,000 次更新。</p>
-          <p>闭环执行时先预测 10 步动作，执行前 5 步后重新观测。第 0 步与终点有 399 对回合的首观测一致，十任务等权成功率提高 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。六个检查点中，1,250 步在原推理种子下得分最高（389/400）。换两个种子与终点复测，平均领先 1.25 个百分点，95% 区间 [−0.50, 2.875] 跨 0。</p>
-          <p class="repo-meta">逐例复查终点失败的 18 个初态，16 个在更换推理种子后至少成功一次。冻结版公开 5,100 条计分回合、复算脚本与同初态对照视频。结果限于一次训练和十个已知仿真任务。</p></div></details>
+          <p>闭环执行时先预测 10 步动作，执行前 5 步后重新观测。开发用的 100 个初态与评测用的 400 个初态互不重叠。微调前与训练终点有 399 对回合的首观测一致，十任务等权成功率提高 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。同一次训练的六个检查点中，1,250 步在原推理种子下得分最高（389/400）。换两个推理种子后，它比 2,000 步终点平均高 1.25 个百分点，配对 95% 区间为 [−0.50, 2.875]。</p>
+          <p class="repo-meta">两个新推理种子下，2,000 步终点分别成功 385/400 和 379/400。与原种子相比，分别有 14、13 个初态从失败变为成功，同时有 11、16 个从成功变为失败。冻结版公开 5,100 条计分回合、复算脚本与同初态对照视频。结果限于一次训练和十个已知仿真任务。</p></div></details>
         </div>
       </article>
 
@@ -53,12 +53,12 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">VLA 策略的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenPI · MuJoCo · LIBERO</p>
-          <p class="project-abstract"><strong>在同一组 500 个初态上屏蔽腕部相机后，LeRobot π0.5 v044 的成功率从 98.4% 降至 4.6%，π0 v044 从 72.0% 变为 71.2%。</strong>我还发现，缺少一路相机输入时，LeRobot 会把后续图像放入错误的输入槽位。</p>
+          <p class="project-abstract"><strong>在同一组 500 个初态上原位屏蔽腕部相机输入后，LeRobot π0.5 v044 的成功率从 98.4% 降至 4.6%，π0 v044 从 72.0% 变为 71.2%。</strong>排查输入管线时，我发现部分 LeRobot 策略在非末位相机输入缺失时，会将后续图像放入错误槽位。</p>
 
-          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>主视角与状态持续更新，每种条件按 10 项任务 × 50 个初态配对评测。LeRobot π0.5 v044 在正常、屏蔽腕部和将腕部画面固定为首帧时分别成功 492、23、0 次。屏蔽相对正常下降 93.8 个百分点（差值的配对 95% 区间 [−96.0, −91.6]）。冻结首帧时，π0 v044 的成功率为 72.8%。</p>
+          <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">冻结版 v1.5.3</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>主视角与状态持续更新，每种条件按 10 项任务 × 50 个初态配对评测。LeRobot π0.5 v044 在正常、屏蔽腕部和将腕部画面固定为首帧时分别成功 492、23、0 次。屏蔽相对正常下降 93.8 个百分点（差值的配对 95% 区间 [−96.0, −91.6]）。冻结腕部首帧时，π0 v044 的成功率为 72.8%。对这个检查点，屏蔽腕部后有 92 个初态从成功变为失败、88 个反向变化。正常输入下再跑一轮，两类变化也分别有 83 和 79 个。</p>
           <p>我确定了相机输入槽位的修复范围，审阅改动并向 LeRobot 提交了覆盖 6 个策略的修复。新增的 27 项回归测试在旧实现中有 21 项失败，修复后全部通过。<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
-          <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表、协议审计及 CI 重算入口随 <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">v1.5.3 证据冻结版</a> 公开。</p>
+          <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表和协议核查均已公开，可从原始记录复算。</p>
           <p class="repo-meta">结果限定于所测检查点与协议，不作统一模型排名。π0 五次全黑复用相同 100 初态；官方与 LeRobot 同时改变权重和管线，不能将差异唯一归因于转换或训练。首帧冻结也改变图像—状态同步；回放结果不证明模型内部采用回放机制。独立微调项目不计入本次冻结。</p></div></details>
         </div>
       </article>
