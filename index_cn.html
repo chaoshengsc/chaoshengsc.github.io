@@ -25,8 +25,8 @@
           </nav>
         </td>
         <td class="profile-copy" valign="top">
-          <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业本科生（2022–2027），关注<strong>具身智能与机器人学习</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
-          <p>我用双相机示范微调机器人操作策略，在 LIBERO 仿真中评测取放成功率。另一个项目比较腕部相机输入对不同策略的影响，并定位到 LeRobot 的相机图像错位问题。</p>
+          <p>我关注<strong>具身智能与机器人学习</strong>。我用双相机示范在单张 GPU 上微调机器人操作策略，也在仿真中比较了不同策略对腕部相机输入的依赖。</p>
+          <p>我在<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>读生物医学工程本科（2022–2027），已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士拟录取，预计 2027 年 7 月入学。</p>
           <p class="availability">寻找深圳具身智能实习 · 可尽快到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
@@ -40,7 +40,7 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">π0.5 在 LIBERO 上的 LoRA 微调</a></h3>
           <p class="repo-tech">OpenPI · JAX · LoRA · LIBERO-Spatial · 2026.11</p>
-          <p class="project-abstract"><strong>用双相机示范在单张 RTX A5000 上微调 π0.5，评测机器人取放任务。</strong>在同一套评测流程、同一组 400 个初态上，微调前成功 0 次，2,000 步后成功 382 次（95.50%）。</p>
+          <p class="project-abstract"><strong>在单张 RTX A5000 上用 LoRA 微调 π0.5，训练机器人根据相机画面和指令取放物体。</strong>在 10 项 LIBERO-Spatial 仿真任务的同一组 400 个留出初态上按相同流程评测，微调前成功 0 次，2,000 次更新后成功 382 次（95.5%）。</p>
           <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同初态对照视频</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>以场景图、腕部图和指令为输入，以后续 10 步示范动作为流匹配的训练目标。按完整轨迹划分 1,608 条训练示范和 85 条离线验证示范，仅用训练集拟合归一化统计量。冻结 OpenPI 的 <code>pi05_base</code>，为视觉塔、语言主干和动作专家等模块的 456 个线性矩阵配置 rank-64 LoRA。每个微批 8 个样本，累积 32 次梯度实现有效批量 256。恢复模型、优化器、采样器和随机状态后续训至 2,000 次更新。</p>
           <p>闭环执行时先预测 10 步动作，执行前 5 步后重新观测。第 0 步与终点有 399 对回合的首观测一致，十任务等权成功率提高 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。六个检查点中，1,250 步在原推理种子下得分最高（389/400）。换两个种子与终点复测，平均领先 1.25 个百分点，95% 区间 [−0.50, 2.875] 跨 0。</p>
@@ -51,13 +51,13 @@
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">相机消融</figcaption><a class="overview-screen" href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer"><img src="assets/libero-blackout-zh.gif" alt="同一个 LIBERO 任务的三次运行：π0.5 正常画面成功，π0.5 相机全涂黑失败，π0 相机全涂黑仍然成功" width="720" height="300" loading="lazy" /></a></figure><p class="media-caption">仿真器实录 · 点击打开结果看板</p></div>
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">具身智能：VLA 模型的相机输入消融</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">VLA 策略的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenPI · MuJoCo · LIBERO · VLA</p>
-          <p class="project-abstract"><strong>屏蔽腕部相机后，π0.5 v044 的成功率从 98.4% 降至 4.6%。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
+          <p class="project-abstract"><strong>在同一组 500 个初态上屏蔽腕部相机后，LeRobot π0.5 v044 的成功率从 98.4% 降至 4.6%，π0 v044 从 72.0% 变为 71.2%。</strong>我还发现，缺少一路相机输入时，LeRobot 会把后续图像放入错误的输入槽位。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>π0.5 v044 的腕部屏蔽实验：98.4% → 4.6%。</strong>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
-          <p>在消融中发现 LeRobot 缺失相机键会使后续图像槽位前移；个人负责发现问题、确定修复范围、审阅改动并提交覆盖 6 策略的修复 PR。提交前回归由旧实现 21 失败／6 通过变为修后 27/27 通过；<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
+          <p>我确定了相机输入槽位的修复范围，审阅改动并向 LeRobot 提交了覆盖 6 个策略的修复。新增的 27 项回归测试在旧实现中有 21 项失败，修复后全部通过。<a href="https://github.com/huggingface/lerobot/pull/5129" target="_blank" rel="noopener noreferrer">PR #5129</a> 尚未合并。</p>
           <p>补充官方 π0/OpenPI 对照：匹配 100 初态，官方正常 93/100、全黑 0/100；LeRobot π0 v044 正常 65/100、全黑五次 53–56/100。状态冻结对照支持状态更新敏感性；所选固定动作在选择外状态回放成功 262/400。逐回合记录、分析表、协议审计及 CI 重算入口随 <a href="https://github.com/chaoshengsc/libero-camera-ablation/blob/v1.5.3/docs/FREEZE_CN.md" target="_blank" rel="noopener noreferrer">v1.5.3 证据冻结版</a> 公开。</p>
           <p class="repo-meta">结果限定于所测检查点与协议，不作统一模型排名。π0 五次全黑复用相同 100 初态；官方与 LeRobot 同时改变权重和管线，不能将差异唯一归因于转换或训练。首帧冻结也改变图像—状态同步；回放结果不证明模型内部采用回放机制。独立微调项目不计入本次冻结。</p></div></details>
         </div>
@@ -66,25 +66,25 @@
       <article class="project-entry">
         <div class="project-media"><figure class="project-overview"><figcaption class="overview-label">工作站</figcaption><a class="overview-screen" href="assets/reconstruction.png" target="_blank" rel="noopener noreferrer"><img src="assets/reconstruction.png" alt="CT 重建软件界面：Shepp-Logan 合成模体" width="1680" height="1236" loading="lazy" /></a></figure><p class="media-caption">真实软件界面 · 点击查看原图</p></div>
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维图像分割与重建工作站</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">三维 CT 分割与重建工作站</a></h3>
           <p class="repo-tech">PySide6 · NumPy · ONNX Runtime · CT 重建 · 2026.05–2026.08</p>
-          <p class="project-abstract"><strong>集成三维图像处理与重建算法的桌面工作站。</strong>开发 DICOM 加载、MPR、分割与 ROI 定量功能，加入空间几何校验和工程保存／恢复，并修正分割预处理中缺失的 spacing 重采样。</p>
+          <p class="project-abstract"><strong>开发桌面 CT 工作站，将重建、器官分割与 ROI 定量集成到同一界面。</strong>修正分割推理的体素间距重采样后，在历史版本、同源公开数据的 20 例配对对照中，平均 Dice 从 0.684 提高到 0.840。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medical-imaging-workstation" target="_blank" rel="noopener noreferrer">代码与文档</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>连接三维图像处理、重建实验与交互操作的桌面工作站。</strong>实现 DICOM 加载、三平面 MPR、多器官分割、ROI 定量与工程保存／恢复；校验序列身份和空间几何，防止蒙版错位与失效缓存复用。</p>
-          <p>实现直接傅里叶与多种迭代 CT 重建算法，结合残差 U-Net 开展稀疏视角实验。分割预处理中补齐训练所需的 spacing 重采样，在历史版本同源公开数据 20 例配对对照中，平均 Dice 从 0.684 提升至 0.840。</p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>实现 DICOM 加载、三平面 MPR、多器官分割、ROI 定量与工程保存／恢复；校验序列身份和空间几何，防止蒙版错位与失效缓存复用。</p>
+          <p>实现直接傅里叶与多种迭代 CT 重建算法，结合残差 U-Net 开展稀疏视角实验。在上述配对实验中，20 例的分割 Dice 均有改善。</p>
           <p class="repo-meta">Dice 与左侧重建截图属于不同实验；上述结果不代表独立临床验证。软件用于教学与科研。</p></div></details>
         </div>
       </article>
 
       <article class="project-entry project-entry-text">
         <div class="project-copy">
-          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26：跨域图像分类与集成推理</a></h3>
+          <h3 class="repo-title"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">RARE26：跨中心内镜图像分类与集成推理</a></h3>
           <p class="repo-tech">PyTorch · ResNet-50 · GastroNet · Docker</p>
-          <p class="project-abstract"><strong>面向跨中心泛化的分类实验与集成推理。</strong>采用近重复分组与双向留一中心评估，统一训练／推理预处理，构建带时间预算与超时降级的 Docker 推理容器。</p>
+          <p class="project-abstract"><strong>用两个中心的内镜图像交叉验证分类模型，将 12 个模型集成为 Docker 推理容器。</strong>在竞赛平台的 T4 上，完整集成用 76.1 秒完成 384 帧推理检查，全程未触发降级。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/rare26-barrett-detection" target="_blank" rel="noopener noreferrer">代码与方法</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>面向正样本稀少的内镜图像分类竞赛项目。</strong>任务目标为固定 90% 召回率下的精确率。采用 GastroNet 预训练 ResNet-50，结合类别采样、EMA、近重复图像分组与双向留一中心评估。</p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>正样本稀少，评测指标为固定 90% 召回率下的精确率。采用 GastroNet 预训练 ResNet-50，结合类别采样、EMA、近重复图像分组与双向留一中心评估。</p>
           <p>统一训练和推理预处理，完成 12 个随机种子模型概率平均与水平翻转增强；构建 Docker 推理容器，按时间预算调度集成，并配置超时降级与输入输出检查。</p>
           <p class="repo-meta">内部 LOCO 用于方案选择，不代表最终提交权重的独立测试成绩；不列竞赛排名。</p></div></details>
         </div>
@@ -99,7 +99,7 @@
           <p class="project-abstract"><strong>将数据泄漏、近重复和特征属性检查整合为命令行工具。</strong>实现总体与类内属性探针，配套英文教程和合成算例，说明评估结果的含义与解释边界。</p>
           <p class="recognition">配套作品入围 MICCAI Educational Challenge 2026</p>
           <p class="repo-links"><a href="https://github.com/chaoshengsc/medaudit" target="_blank" rel="noopener noreferrer">代码</a> / <a href="https://github.com/chaoshengsc/medaudit/blob/main/tutorial/from-pixels-to-patients.md" target="_blank" rel="noopener noreferrer">英文教程</a> / <a href="assets/mec2026.mp4" target="_blank" rel="noopener noreferrer">▶ 一分钟介绍</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>将数据泄漏、近重复与特征属性检查整合成可运行的审计流程。</strong>配置驱动的 CLI 支持跨集合近重复、患者分组泄漏和总体／类内属性探针；实现 AUROC、Brier、ECE 与患者簇 Bootstrap 指标函数。</p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>配置驱动的 CLI 支持跨集合近重复、患者分组泄漏和总体／类内属性探针；实现 AUROC、Brier、ECE 与患者簇 Bootstrap 指标函数。</p>
           <p>配套英文教程、运行指南与可运行合成算例。作品 <em>From Pixels to Patients</em> 入围 MICCAI Educational Challenge 2026（Finalist）。</p>
           <p class="repo-meta">属性可预测不等于分类器依赖该属性；合成算例不代表临床性能。完整校准审计尚未接入 CLI。</p><figure class="audit-detail-figure"><a href="assets/medaudit-probe.png" target="_blank" rel="noopener noreferrer"><img src="assets/medaudit-probe.png" alt="总体与类内属性探针的合成实验对照" width="1926" height="874" loading="lazy" /></a><figcaption>合成实验对照；点击查看原图，不代表临床性能。</figcaption></figure></div></details>
         </div>
@@ -112,7 +112,7 @@
           <p class="project-abstract"><strong>复现多期 CT 特征提取流程，核对重算结果。</strong>串联三维肿瘤／瘤周区域、组学特征与模型融合，开展去重敏感性和置信区间分析，保留失败记录以追溯处理过程。</p>
 
 
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>重建多期图像、特征提取与模型融合的数据处理链。</strong>基于 111 条历史队列记录，重建四期 CT、三维肿瘤／瘤周 VOI 与 94 项原始组学特征的处理流程，开展去重敏感性及置信区间分析。</p>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>基于 111 条历史队列记录，重建四期 CT、三维肿瘤／瘤周 VOI 与 94 项原始组学特征的处理流程，开展去重敏感性及置信区间分析。</p>
           <p>完成 6,660 个 VOI 的重算核对，覆盖有效特征一致性与失败记录复现，形成可追溯的数据处理流程。</p>
           <p class="repo-meta">核对数量包含失败记录，不等于全部生成有效特征；现有证据不足以确认模型有效性。患者数据与内部材料不公开。</p></div></details>
         </div>
