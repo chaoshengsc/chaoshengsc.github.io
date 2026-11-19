@@ -26,7 +26,7 @@
         </td>
         <td class="profile-copy" valign="top">
           <p>我是盛超，<strong><a href="https://www.gdmu.edu.cn/" target="_blank" rel="noopener noreferrer">广东医科大学</a></strong>生物医学工程专业本科生（2022–2027），关注<strong>具身智能与机器人学习</strong>。已获<strong><a href="https://www.uq.edu.au/" target="_blank" rel="noopener noreferrer">昆士兰大学</a></strong>数据科学硕士（Master of Data Science）拟录取，2027 年 7 月入学。</p>
-          <p>近期在单卡上完成 π0.5 的 LoRA 微调与仿真闭环评测，并独立开展 VLA 相机输入消融。既有项目涵盖三维图像处理、模型训练与推理交付。</p>
+          <p>我用双相机示范微调机器人操作策略，在 LIBERO 仿真中评测取放成功率。另一个项目比较腕部相机输入对不同策略的影响，并定位到 LeRobot 的相机图像错位问题。</p>
           <p class="availability">寻找深圳具身智能实习 · 可尽快到岗<br />6 个月及以上 · 每周 5 天，具体可协商</p>
           <p class="contact" id="contact"><strong>邮箱：</strong><strong><a href="mailto:chaosheng.sci@gmail.com" title="发送邮件至 chaosheng.sci@gmail.com">chaosheng.sci@gmail.com</a></strong></p>
         </td>
@@ -40,11 +40,11 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">π0.5 在 LIBERO 上的 LoRA 微调</a></h3>
           <p class="repo-tech">OpenPI · JAX · LoRA · LIBERO-Spatial · 2026.11</p>
-          <p class="project-abstract"><strong>单张 RTX A5000 完成 2,000 次优化器更新。</strong>在同一套评测流程、同一组 400 个初态上，微调前成功 0 次，2,000 步后成功 382 次（95.50%）。</p>
+          <p class="project-abstract"><strong>用双相机示范在单张 RTX A5000 上微调 π0.5，评测机器人取放任务。</strong>在同一套评测流程、同一组 400 个初态上，微调前成功 0 次，2,000 步后成功 382 次（95.50%）。</p>
           <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同初态对照视频</a></p>
-          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>基于 OpenPI 的 <code>pi05_base</code> 冻结底座，采用全线性层 LoRA（rank 64），用梯度累积实现有效批量 256。按完整示范划分 1,608 条训练、85 条离线验证，归一化只用训练数据拟合，保存优化器与采样状态供续训。</p>
-          <p>对第 0 步与训练终点的 399 对首观测一致回合，十任务等权成功率增加 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。比较六个检查点并换两个推理种子复测 1,250 与 2,000 步，两者平均差的区间仍跨 0。</p>
-          <p class="repo-meta">结果限于一次训练与十个已知仿真任务。冻结版公开 5,100 条计分回合、复算脚本及对照视频，支持复算已发布结果。</p></div></details>
+          <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>以场景图、腕部图和指令为输入，以后续 10 步示范动作为流匹配的训练目标。按完整轨迹划分 1,608 条训练示范和 85 条离线验证示范，仅用训练集拟合归一化统计量。冻结 OpenPI 的 <code>pi05_base</code>，为视觉塔、语言主干和动作专家等模块的 456 个线性矩阵配置 rank-64 LoRA。每个微批 8 个样本，累积 32 次梯度实现有效批量 256。恢复模型、优化器、采样器和随机状态后续训至 2,000 次更新。</p>
+          <p>闭环执行时先预测 10 步动作，执行前 5 步后重新观测。第 0 步与终点有 399 对回合的首观测一致，十任务等权成功率提高 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。六个检查点中，1,250 步在原推理种子下得分最高（389/400）。换两个种子与终点复测，平均领先 1.25 个百分点，95% 区间 [−0.50, 2.875] 跨 0。</p>
+          <p class="repo-meta">逐例复查终点失败的 18 个初态，16 个在更换推理种子后至少成功一次。冻结版公开 5,100 条计分回合、复算脚本与同初态对照视频。结果限于一次训练和十个已知仿真任务。</p></div></details>
         </div>
       </article>
 
@@ -53,7 +53,7 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">具身智能：VLA 模型的相机输入消融</a></h3>
           <p class="repo-tech">LeRobot · OpenPI · MuJoCo · LIBERO · VLA</p>
-          <p class="project-abstract"><strong>检验相机输入变化如何影响机器人策略。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
+          <p class="project-abstract"><strong>屏蔽腕部相机后，π0.5 v044 的成功率从 98.4% 降至 4.6%。</strong> 在 LIBERO-Spatial 上开展四模型全黑探索，以及 π0／π0.5 腕部单因素实验；用同任务、同初态配对，区分黑图、原槽位屏蔽和首帧冻结。</p>
 
           <p class="repo-links"><a href="https://github.com/chaoshengsc/libero-camera-ablation" target="_blank" rel="noopener noreferrer">代码与结果</a> / <a href="https://chaoshengsc.github.io/libero-camera-ablation/dashboard/?lang=zh" target="_blank" rel="noopener noreferrer">结果看板</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p><strong>π0.5 v044 的腕部屏蔽实验：98.4% → 4.6%。</strong>正常、屏蔽腕部、冻结腕部首帧各为 500 回合（10 任务 × 50 初态），分别成功 492、23、0 次；屏蔽相对正常为 −93.8 个百分点，配对 95% 区间 [−96.0, −91.6]。π0 v044 对应为 72.0%、71.2%、72.8%。主视角保持正常更新。</p>
