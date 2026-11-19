@@ -40,7 +40,7 @@
         <div class="project-copy">
           <h3 class="repo-title"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning" target="_blank" rel="noopener noreferrer">π0.5 在 LIBERO 上的 LoRA 微调</a></h3>
           <p class="repo-tech">OpenPI · JAX · LoRA · LIBERO-Spatial · 2026.11</p>
-          <p class="project-abstract"><strong>单张 RTX A5000 完成 2,000 次优化器更新。</strong>在同 400 个 LIBERO-Spatial 留出初态上，官方起点的第 0 步对照成功 0/400，训练终点成功 382/400（95.50%）。</p>
+          <p class="project-abstract"><strong>单张 RTX A5000 完成 2,000 次优化器更新。</strong>在同一套评测流程、同一组 400 个初态上，微调前成功 0 次，2,000 步后成功 382 次（95.50%）。</p>
           <p class="repo-links"><a href="https://github.com/chaoshengsc/pi05-libero-finetuning/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">冻结版 v1.1.0</a> / <a href="https://github.com/chaoshengsc/pi05-libero-finetuning/blob/v1.1.0/docs/results.md" target="_blank" rel="noopener noreferrer">实验结果</a> / <a href="https://cdn.jsdelivr.net/gh/chaoshengsc/pi05-libero-finetuning@70cf7dc0754567b5b425e05f74cc18f68f3f52f1/assets/failures/task08-12-comparison.mp4" target="_blank" rel="noopener noreferrer">同初态对照视频</a></p>
           <details class="project-details"><summary>实现与验证说明</summary><div class="detail-body"><p>基于 OpenPI 的 <code>pi05_base</code> 冻结底座，采用全线性层 LoRA（rank 64），用梯度累积实现有效批量 256。按完整示范划分 1,608 条训练、85 条离线验证，归一化只用训练数据拟合，保存优化器与采样状态供续训。</p>
           <p>对第 0 步与训练终点的 399 对首观测一致回合，十任务等权成功率增加 95.50 个百分点（95% 配对区间 [93.50, 97.25]）。比较六个检查点并换两个推理种子复测 1,250 与 2,000 步，两者平均差的区间仍跨 0。</p>
